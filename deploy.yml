@@ -1,7 +1,7 @@
----
-version: "2.0"
+version: 2.0
 
 services:
+  # SoftEther VPN Service
   softether:
     image: andrey01/softether:4.38-9760-2
     expose:
@@ -37,9 +37,28 @@ services:
         to:
           - global: true
 
+  # Frontend Service (Next.js App)
+  frontend:
+    image: rodrirr/akashvpn-frontend:latest
+    expose:
+      - port: 3000
+        as: 80
+        to:
+          - global: true
+
+  # Documentation Service (Docusaurus)
+  docs:
+    image: rodrirr/akashvpn-docs:latest
+    expose:
+      - port: 80
+        as: 80
+        to:
+          - global: true
+
 profiles:
   compute:
-    softether:
+    # VPN compute profile
+    softether-profile:
       resources:
         cpu:
           units: 1.0
@@ -47,15 +66,48 @@ profiles:
           size: 512Mi
         storage:
           size: 512Mi
+    # Frontend compute profile
+    frontend-profile:
+      resources:
+        cpu:
+          units: 0.5
+        memory:
+          size: 512Mi
+        storage:
+          size: 512Mi
+    # Docs compute profile
+    docs-profile:
+      resources:
+        cpu:
+          units: 0.5
+        memory:
+          size: 256Mi
+        storage:
+          size: 512Mi
+
   placement:
     akash:
       pricing:
-        softether:
+        softether-profile:
           denom: uakt
           amount: 10000
+        frontend-profile:
+          denom: uakt
+          amount: 5000
+        docs-profile:
+          denom: uakt
+          amount: 5000
 
 deployment:
   softether:
     akash:
-      profile: softether
+      profile: softether-profile
+      count: 1
+  frontend:
+    akash:
+      profile: frontend-profile
+      count: 1
+  docs:
+    akash:
+      profile: docs-profile
       count: 1

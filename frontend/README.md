@@ -151,6 +151,14 @@ interface ServerNode {
 
 ## 🚀 Deployment
 
+### Deploy on Akash
+
+- Go to https://console.akash.network/
+- Use the deploy.yml in this directory and deploy as a custom container 
+- Done
+
+---
+
 ### Production Build
 
 ```bash

@@ -46,13 +46,17 @@ You can serve it locally or deploy it using Docker or GitHub Pages.
 
 Build a Docker image and deploy the site using Akash's decentralized compute network.
 
-You can use a `Dockerfile` and `deploy.yaml` to containerize and push to an Akash provider.
+You can use the sample `Dockerfile` to containerize the docs and then push the image to a container registry like DockerHub, GitHub Container Registry or similar. 
+
+You can then use the image and/or the sample `deploy.yaml` to deploy to an Akash Network provider.
 
 Example:
 
 ```bash
 docker build -t akash-vpn-docs .
 ```
+
+---
 
 ### 🐙 GitHub Pages
 

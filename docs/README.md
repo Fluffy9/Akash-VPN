@@ -1,41 +1,28 @@
-# Website
+# Akash VPN 🌐
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+**Decentralized Privacy for Everyone - Powered by Akash Network**
 
-## Installation
+![Akash VPN Logo](../design-system/avpn.png)
 
-```bash
-npm install
-```
+A comprehensive, decentralized VPN solution built on the Akash Network. Akash VPN provides secure, private internet access without centralized control, leveraging the power of decentralized cloud infrastructure.
 
-## Local Development
+---
 
-```bash
-npm start
-```
+## 🏗️ Project Architecture
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+This repository contains four core components that together form the Akash VPN ecosystem:
 
-## Build
+### 📚 [Documentation](../akash-vpn-docs/)
+Comprehensive guides, setup instructions, and technical documentation built with Docusaurus.
 
-```bash
-npm run build
-```
+### 🖥️ [Web Frontend](../frontend/)
+Modern React/Next.js user interface featuring a stunning 3D globe visualization and intuitive VPN controls.
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+### 🔒 [VPN Server](../vpn/)
+SoftEther VPN server implementation providing multi-protocol support (OpenVPN, L2TP/IPsec, SSL-VPN).
 
-## Deployment
+### ⚡ [API Server](../server/)
+Backend service handling user authentication, server management, and VPN configuration.
 
-Using SSH:
+---
 
-```bash
-USE_SSH=true npm deploy
-```
-
-Not using SSH:
-
-```bash
-GIT_USER=<Your GitHub username> npm deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.

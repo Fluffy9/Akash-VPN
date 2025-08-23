@@ -1,11 +1,12 @@
-# Use a minimal nginx image
+# Build stage
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+COPY . .
+RUN yarn install && yarn build
+
+# Production stage
 FROM nginx:alpine
-
-# Copy built Docusaurus site to nginx public folder
-COPY build/ /usr/share/nginx/html
-
-# Expose port 80
+COPY --from=builder /app/build /usr/share/nginx/html
 EXPOSE 80
-
-# Start nginx
 CMD ["nginx", "-g", "daemon off;"]
