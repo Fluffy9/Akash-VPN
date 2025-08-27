@@ -1,0 +1,66 @@
+# Caddyfile for Akash VPN Production
+# This file configures Caddy as a reverse proxy with automatic HTTPS
+
+# Main domain with path-based routing (recommended for single domain)
+your-domain.com {
+    # Force HTTPS redirect
+    header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    
+    # Security headers
+    header X-Content-Type-Options nosniff
+    header X-Frame-Options DENY
+    header X-XSS-Protection "1; mode=block"
+    header Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Health check endpoint (most specific first)
+    handle /health {
+        respond "Akash VPN is running" 200
+    }
+    
+    # Documentation - /docs path (specific path first)
+    handle /docs* {
+        reverse_proxy docs:80 {
+            header_up Host {http.request.host}
+            header_up X-Real-IP {http.request.remote}
+            header_up X-Forwarded-For {http.request.remote}
+            header_up X-Forwarded-Proto {http.request.scheme}
+        }
+    }
+    
+    # API - /api path (specific path first)
+    handle /api* {
+        reverse_proxy backend:3000 {
+            header_up Host {http.request.host}
+            header_up X-Real-IP {http.request.remote}
+            header_up X-Forwarded-For {http.request.remote}
+            header_up X-Forwarded-Proto {http.request.scheme}
+        }
+    }
+    
+    # Frontend - Main site (catch-all for root and other paths)
+    handle {
+        reverse_proxy frontend:3000 {
+            header_up Host {http.request.host}
+            header_up X-Real-IP {http.request.remote}
+            header_up X-Forwarded-For {http.request.remote}
+            header_up X-Forwarded-Proto {http.request.scheme}
+        }
+    }
+}
+
+# Alternative subdomain-based routing (uncomment if preferred)
+# docs.your-domain.com {
+#     reverse_proxy docs:80
+# }
+# 
+# api.your-domain.com {
+#     reverse_proxy backend:3000
+# }
+
+# VPN Admin interface (optional - secure this properly in production!)
+# admin.your-domain.com {
+#     reverse_proxy vpn:5555
+#     basicauth {
+#         admin $2a$10$... # Generate with: caddy hash-password
+#     }
+# }

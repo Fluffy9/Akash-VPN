@@ -1,0 +1,24 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install dependencies first (for caching)
+COPY package.json package-lock.json* ./
+RUN npm ci
+
+# Copy all source files
+COPY . .
+
+# Set environment variables
+ENV NODE_ENV=development
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV WATCHPACK_POLLING=true
+
+# Expose port
+EXPOSE 3000
+
+# Make sure Next.js can bind to 0.0.0.0
+ENV HOSTNAME=0.0.0.0
+
+# Start development server with host binding
+CMD ["npm", "run", "dev", "--", "--hostname", "0.0.0.0"]

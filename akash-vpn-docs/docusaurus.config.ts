@@ -1,109 +1,109 @@
-import { themes as prismThemes } from 'prism-react-renderer';
-import type { Config } from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
+import { themes as prismThemes } from "prism-react-renderer";
+import type { Config } from "@docusaurus/types";
+import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
-  title: 'Akash VPN Docs',
-  tagline: 'Decentralized. Private. Secure.',
-  favicon: 'img/favicon.ico',
+  title: "Akash VPN Docs",
+  tagline: "Decentralized. Private. Secure.",
+  favicon: "img/favicon.ico",
 
   future: {
     v4: true,
   },
 
-  url: 'https://akash-vpn-docs.example.com', // 🔁 Replace with the actual domain
-  baseUrl: '/',
+  url: "https://akash-vpn-docs.example.com", // TBD
+  baseUrl: "/docs/",
 
-  organizationName: 'Akash-Network',
-  projectName: 'Akash-VPN',    // To use the GitHub repo name
+  organizationName: "Akash-Network",
+  projectName: "Akash-VPN", // To use the GitHub repo name
 
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
 
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: "en",
+    locales: ["en"],
   },
 
   presets: [
     [
-      'classic',
+      "classic",
       {
         docs: {
-          sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/Fluffy9/Akash-VPN/edit/main/', //TBD
+          sidebarPath: "./sidebars.ts",
+          editUrl: "https://github.com/Fluffy9/Akash-VPN/edit/main/", //TBD
         },
         blog: false, // Disabled for now
         theme: {
-          customCss: './src/css/custom.css',
+          customCss: "./src/css/custom.css",
         },
       } satisfies Preset.Options,
     ],
   ],
 
   themeConfig: {
-    image: 'img/docusaurus-social-card.jpg', // TBD
+    image: "img/docusaurus-social-card.jpg", // TBD
     navbar: {
-      title: 'Akash VPN',
+      title: "Akash VPN",
       logo: {
-        alt: 'Akash VPN Logo',
-        src: 'img/logo.svg', // TBD
+        alt: "Akash VPN Logo",
+        src: "img/logo.svg", // TBD
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Docs',
+          type: "docSidebar",
+          sidebarId: "tutorialSidebar",
+          position: "left",
+          label: "Docs",
         },
         {
-          href: 'https://github.com/Fluffy9/Akash-VPN',
-          label: 'GitHub',
-          position: 'right',
+          href: "https://github.com/Fluffy9/Akash-VPN",
+          label: "GitHub",
+          position: "right",
         },
         {
-          href: 'https://discord.gg/JKGjJUHB',
-          label: 'Support',
-          position: 'right',
+          href: "https://discord.gg/JKGjJUHB",
+          label: "Support",
+          position: "right",
         },
       ],
     },
 
     footer: {
-      style: 'dark',
+      style: "dark",
       links: [
         {
-          title: 'Docs',
+          title: "Docs",
           items: [
             {
-              label: 'Getting Started',
-              to: '/docs/',
+              label: "Getting Started",
+              to: "/docs/",
             },
             {
-              label: 'FAQ',
-              to: '/docs/faq',
+              label: "FAQ",
+              to: "/docs/faq",
             },
           ],
         },
         {
-          title: 'Community',
+          title: "Community",
           items: [
             {
-              label: 'Discord',
-              href: 'https://discord.gg/JKGjJUHB',
+              label: "Discord",
+              href: "https://discord.gg/JKGjJUHB",
             },
             {
-              label: 'Twitter/X',
-              href: 'https://x.com/akashnet_',
+              label: "Twitter/X",
+              href: "https://x.com/akashnet_",
             },
           ],
         },
         {
-          title: 'More',
+          title: "More",
           items: [
             {
-              label: 'GitHub',
-              href: 'https://github.com/Fluffy9/Akash-VPN',
+              label: "GitHub",
+              href: "https://github.com/Fluffy9/Akash-VPN",
             },
           ],
         },

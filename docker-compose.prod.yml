@@ -1,0 +1,81 @@
+version: '3.8'
+
+services:
+  # Frontend Service (Next.js) - Production
+  frontend:
+    image: ghcr.io/your-username/akash-vpn-frontend:latest
+    # Remove external port mapping - only accessible via Caddy
+    expose:
+      - "3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+    restart: unless-stopped
+    networks:
+      - akash-vpn-network
+
+  # Backend Service (Express.js) - Production  
+  backend:
+    image: ghcr.io/your-username/akash-vpn-backend:latest
+    # Remove external port mapping - only accessible via Caddy
+    expose:
+      - "3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    restart: unless-stopped
+    networks:
+      - akash-vpn-network
+
+  # Documentation Service (Docusaurus) - Production
+  docs:
+    image: ghcr.io/your-username/akash-vpn-docs:latest
+    # Remove external port mapping - only accessible via Caddy
+    expose:
+      - "80"
+    restart: unless-stopped
+    networks:
+      - akash-vpn-network
+
+  # Reverse Proxy (Caddy) - Main entry point
+  caddy:
+    image: caddy:2-alpine
+    ports:
+      - "80:80"    # HTTP (auto-redirect to HTTPS)
+      - "443:443"  # HTTPS with automatic Let's Encrypt
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - frontend
+      - backend
+      - docs
+      - vpn
+    restart: unless-stopped
+    networks:
+      - akash-vpn-network
+
+  # SoftEther VPN Service
+  vpn:
+    image: andrey01/softether:4.38-9760-2
+    # Keep VPN ports exposed directly for VPN client connections
+    ports:
+      - "992:992"       # SoftEther VPN Server port
+      - "1194:1194/udp" # OpenVPN UDP
+      - "500:500/udp"   # IPsec IKE
+      - "4500:4500/udp" # IPsec NAT-T
+    # Expose admin interface to Caddy only (secured)
+    expose:
+      - "5555"          # Admin interface via Caddy
+    restart: unless-stopped
+    networks:
+      - akash-vpn-network
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+networks:
+  akash-vpn-network:
+    driver: bridge

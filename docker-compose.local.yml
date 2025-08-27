@@ -1,0 +1,100 @@
+services:
+  # Reverse Proxy (Caddy) - Main entry point
+  caddy:
+    image: caddy:2-alpine
+    ports:
+      - "80:80"      # Main HTTP entry point
+      - "3001:3001"  # Direct frontend access
+      - "3002:3002"  # Direct backend access  
+      - "3003:3003"  # Direct docs access
+      - "5555:5555"  # VPN admin interface
+    volumes:
+      - ./Caddyfile.local:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - frontend
+      - backend
+      - docs
+      - vpn
+    networks:
+      - akash-vpn-network
+    restart: unless-stopped
+
+  # Frontend Service (Next.js)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    # Remove external port mapping - only accessible via Caddy
+    expose:
+      - "3000"
+    environment:
+      - NODE_ENV=development
+      - NEXT_TELEMETRY_DISABLED=1
+      - WATCHPACK_POLLING=true
+      - HOSTNAME=0.0.0.0
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - backend
+    networks:
+      - akash-vpn-network
+
+  # Backend Service (Express.js)
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    # Remove external port mapping - only accessible via Caddy
+    expose:
+      - "3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    networks:
+      - akash-vpn-network
+
+  # Documentation Service (Docusaurus)
+  docs:
+    build:
+      context: ./akash-vpn-docs
+      dockerfile: Dockerfile.dev
+    # Remove external port mapping - only accessible via Caddy
+    expose:
+      - "3000"
+    volumes:
+      - ./akash-vpn-docs:/app
+      - /app/node_modules
+    networks:
+      - akash-vpn-network
+
+  # SoftEther VPN Service (for local testing)
+  vpn:
+    image: andrey01/softether:4.38-9760-2
+    # Keep VPN ports exposed directly for VPN client connections
+    ports:
+      - "992:992"    # SoftEther VPN Server port
+      - "1194:1194/udp"  # OpenVPN UDP
+      - "500:500/udp"    # IPsec IKE
+      - "4500:4500/udp"  # IPsec NAT-T
+    # Expose admin port to Caddy only
+    expose:
+      - "5555"      # Admin interface via Caddy
+      - "80"        # HTTP
+      - "443"       # HTTPS
+    networks:
+      - akash-vpn-network
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+networks:
+  akash-vpn-network:
+    driver: bridge
