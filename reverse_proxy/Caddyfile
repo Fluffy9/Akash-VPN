@@ -1,0 +1,52 @@
+# The Caddyfile is an easy way to configure your Caddy web server.
+#
+# Unless the file starts with a global options block, the first
+# uncommented line is always the address of your site.
+#
+# To use your own domain name (with automatic HTTPS), first make
+# sure your domain's A/AAAA DNS records are properly pointed to
+# this machine's public IP, then replace ":80" below with your
+# domain name.
+
+
+# VPN Ports
+
+:992 {
+       reverse_proxy softether:992
+}
+
+:5555 {
+       reverse_proxy softether:5555
+}
+
+
+:1194 {
+       reverse_proxy softether:1194
+}
+
+:500 {
+       reverse_proxy softether:500
+}
+
+:4500 {
+       reverse_proxy softether:4500
+}
+
+
+# web apps
+
+:80 :443 {
+        # api
+        redir /api /api/
+        reverse_proxy /api/* api:80
+
+	# docs
+        redir /docs /docs/
+	reverse_proxy /docs/* docs:80
+
+	# landing page
+        reverse_proxy frontend:80
+}
+
+# Refer to the Caddy docs for more information:
+# https://caddyserver.com/docs/caddyfile

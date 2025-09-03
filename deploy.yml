@@ -16,26 +16,26 @@ services:
       - port: 992
         as: 992
         to:
-          - global: true
+          - service: caddy
       - port: 5555
         as: 5555
         to:
-          - global: true
+          - service: caddy
       - port: 1194
         as: 1194
         proto: udp
         to:
-          - global: true
+          - service: caddy
       - port: 500
         as: 500
         proto: udp
         to:
-          - global: true
+          - service: caddy
       - port: 4500
         as: 4500
         proto: udp
         to:
-          - global: true
+          - service: caddy
 
   # Frontend Service (Next.js App)
   frontend:
@@ -44,7 +44,7 @@ services:
       - port: 3000
         as: 80
         to:
-          - global: true
+          - service: caddy
 
   # Documentation Service (Docusaurus)
   docs:
@@ -52,6 +52,20 @@ services:
     expose:
       - port: 80
         as: 80
+        to:
+          - service: caddy
+  # Reverse Proxy
+  caddy:
+    # Dockerfile: reverse_proxy/Dockerfile
+    image: programmerke/akash-vpn-caddy:0.0.15
+    params:
+      storage:
+        data:
+          mount: /data
+    expose:
+      - port: 80
+        accept:
+          - akashvpn.decentralized.win
         to:
           - global: true
 
@@ -84,7 +98,20 @@ profiles:
           size: 256Mi
         storage:
           size: 512Mi
-
+    # caddy compute profile
+    caddy-profile:
+      resources:
+        cpu:
+          units: 1.0
+        memory:
+          size: 512Mi
+        storage:
+          - size: 512Mi
+          - name: data
+            size: 1Gi
+            attributes:
+              persistent: true
+              class: beta3
   placement:
     akash:
       pricing:
@@ -97,6 +124,9 @@ profiles:
         docs-profile:
           denom: uakt
           amount: 5000
+        caddy-profile:
+          denom: uakt
+          amount: 10000
 
 deployment:
   softether:
@@ -110,4 +140,8 @@ deployment:
   docs:
     akash:
       profile: docs-profile
+      count: 1
+  caddy:
+    akash:
+      profile: caddy-profile
       count: 1
