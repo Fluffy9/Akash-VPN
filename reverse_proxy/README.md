@@ -29,7 +29,7 @@ Deploy the SDL on Akash.
 
 *** Domain Name Configuration
 
-Configure TLS termination via cloudflare for the domain name above
+Configure TLS termination via Cloudflare for the domain name above,
 using [this][tls] guide on the Akash Documentaion.
 
 [tls]: https://akash.network/docs/guides/deployments/tls-termination-of-akash-deployment/

@@ -15,10 +15,12 @@ services:
           - global: true
       - port: 992
         as: 992
+        proto: tcp
         to:
           - service: caddy
       - port: 5555
         as: 5555
+        proto: tcp
         to:
           - service: caddy
       - port: 1194
@@ -57,7 +59,7 @@ services:
   # Reverse Proxy
   caddy:
     # Dockerfile: reverse_proxy/Dockerfile
-    image: programmerke/akash-vpn-caddy:0.0.15
+    image: programmerke/akash-vpn-caddy:0.0.16
     params:
       storage:
         data:
@@ -68,6 +70,32 @@ services:
           - akashvpn.decentralized.win
         to:
           - global: true
+      - port: 992
+        as: 992
+        proto: tcp
+        to:
+          - global: true
+      - port: 5555
+        as: 5555
+        proto: tcp
+        to:
+          - global: true
+      - port: 1194
+        as: 1194
+        proto: udp
+        to:
+          - global: true
+      - port: 500
+        as: 500
+        proto: udp
+        to:
+          - global: true
+      - port: 4500
+        as: 4500
+        proto: udp
+        to:
+          - global: true
+            
 
 profiles:
   compute:

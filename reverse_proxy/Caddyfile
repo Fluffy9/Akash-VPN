@@ -11,27 +11,51 @@
 
 # VPN Ports
 
-:992 {
-       reverse_proxy softether:992
+{
+  layer4 {
+  
+    0.0.0.0:992 {
+      route {
+        proxy {
+	  upstream softether:992
+	}
+      }
+    }
+
+    0.0.0.0:5555 {
+      route {
+        proxy {
+	  upstream softether:5555
+	}
+      }
+    }
+
+    0.0.0.0:1194 {
+      route {
+        proxy {
+	  upstream softether:1194
+	}
+      }
+    }
+
+    0.0.0.0:500 {
+      route {
+        proxy {
+	  upstream softether:500
+	}
+      }
+    }
+
+    0.0.0.0:4500 {
+      route {
+        proxy {
+	  upstream softether:4500
+	}
+      }
+    }
+    
+  }
 }
-
-:5555 {
-       reverse_proxy softether:5555
-}
-
-
-:1194 {
-       reverse_proxy softether:1194
-}
-
-:500 {
-       reverse_proxy softether:500
-}
-
-:4500 {
-       reverse_proxy softether:4500
-}
-
 
 # web apps
 
