@@ -60,16 +60,19 @@
 # web apps
 
 :80 :443 {
-        # api
-        redir /api /api/
-        reverse_proxy /api/* api:80
+    encode zstd gzip
+    respond /healthz 200
 
-	# docs
-        redir /docs /docs/
-	reverse_proxy /docs/* docs:80
+    # api
+    redir /api /api/
+    reverse_proxy /api/* api:80
 
-	# landing page
-        reverse_proxy frontend:80
+    # docs
+    redir /docs /docs/
+    reverse_proxy /docs/* docs:80
+
+    # landing page
+    reverse_proxy frontend:80
 }
 
 # Refer to the Caddy docs for more information:
