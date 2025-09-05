@@ -1,0 +1,19 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 801" width="2000" height="801">
+	<title>Akash VPN</title>
+	<defs>
+		<clipPath clipPathUnits="userSpaceOnUse" id="cp1">
+			<path d="m0-99h2000v1000h-2000z"/>
+		</clipPath>
+		<image width="976" height="852" id="img1" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDg4IiBoZWlnaHQ9IjQyNiIgdmlld0JveD0iMCAwIDQ4OCA0MjYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0zMjUuODc1IDI4NC4wMzFMNDA2LjMxMyA0MjUuNzQ0SDI0My44M0wxNjIuNTQzIDI4NC4wMzFIMzI1Ljg3NVoiIGZpbGw9InVybCgjcGFpbnQwX2xpbmVhcl8yNTJfNjA5KSIvPgo8cGF0aCBkPSJNNDA2LjI3IDQyNS43NjhMNDg3LjQyMiAyODQuMDU1TDMyNC45ODMgMC41NjA1NDdIMTYyLjU0M0w0MDYuMjcgNDI1Ljc2OFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik04MS4zMjUxIDE0Mi4yMzZIMjQzLjc2NUw4MS4zOTI3IDQyNS43MzFMMC4xMDU4MzUgMjg0LjAxOEw4MS4zMjUxIDE0Mi4yMzZaIiBmaWxsPSJ3aGl0ZSIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDBfbGluZWFyXzI1Ml82MDkiIHgxPSIyNzgiIHkxPSIzMTIuNSIgeDI9IjMzMyIgeTI9IjI2MiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSJ3aGl0ZSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IndoaXRlIiBzdG9wLW9wYWNpdHk9IjAiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4K"/>
+	</defs>
+	<style>
+		.s0 { fill: #ffffff } 
+	</style>
+	<g id="Prancheta 1" clip-path="url(#cp1)">
+		<g id="akt vpn white">
+			<use id="akash-sign-white" href="#img1" transform="matrix(.459,0,0,.459,251.009,152)"/>
+			<path id="\" class="s0" aria-label="\"  d="m819.2 284.3h-43.2l101.3 258.7h42.9z"/>
+			<path id="vpn" class="s0" aria-label="vpn"  d="m1015.4 536h59.4l101.9-244.4h-62.3l-44.5 112.3c-10.4 26.7-19.3 52.4-22.8 67.8-3-13.4-11.4-38.6-21.8-67.8l-42.5-112.3h-64.3zm195.7 113.3h60.4v-146c15.3 24.8 47 39.1 83.6 39.1 72.7 0 114.3-55.4 114.3-131.6 0-76.7-45.6-126.7-114.3-126.7-37.1 0-69.3 16.4-84.1 44.6l-4-37.1h-55.9zm60.9-235.5c0-44.1 27.2-74.7 68.7-74.7 42.6 0 67.8 31.1 67.8 74.7 0 43.5-25.2 74.2-67.8 74.2-41.5 0-68.7-30.2-68.7-74.2zm306.5 122.2v-131.6c0-39.6 22.7-65.3 59.8-65.3 31.2 0 51.5 19.7 51.5 60.8v136.1h60.3v-150.4c0-63.4-31.6-101.5-93-101.5-33.1 0-62.8 14.4-78.1 39.1l-5-31.6h-55.9v244.4z"/>
+		</g>
+	</g>
+</svg>
