@@ -67,7 +67,7 @@ services:
     expose:
       - port: 80
         accept:
-          - akashvpn.decentralized.win
+          - akashvpn.pupcakes.me
         to:
           - global: true
       - port: 992

@@ -1,10 +1,10 @@
-* Reverse Proxy
+# Reverse Proxy
 
 This describes how to setup the Caddy reverse proxy for Akash VPN.
 
-** Setup
+## Setup
 
-*** Docker Image
+### Docker Image
 
 Prepare the docker image.
 
@@ -16,7 +16,7 @@ Prepare the docker image.
 
 `docker push <image_name>:<tag>`
 
-*** SDL
+### SDL
 
 Update the [SDL](../deploy.yml)
 
@@ -27,7 +27,7 @@ Update the [SDL](../deploy.yml)
   
 Deploy the SDL on Akash.
 
-*** Domain Name Configuration
+### Domain Name Configuration
 
 Configure TLS termination via Cloudflare for the domain name above,
 using [this][tls] guide on the Akash Documentaion.
