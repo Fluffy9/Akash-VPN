@@ -25,7 +25,7 @@ SoftEther VPN server implementation providing multi-protocol support (OpenVPN, L
 ### ⚡ [API Server](../server/)
 Backend service handling user authentication, server management, and VPN configuration.
 
-ELLIOT SENDS HIS DISREGARDS
+ELLIOT SENDS HIS DISREGARDS!
 
 ---
 
