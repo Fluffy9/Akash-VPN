@@ -17,27 +17,27 @@ services:
         as: 992
         proto: tcp
         to:
-          - service: caddy
+          - global: true
       - port: 5555
         as: 5555
         proto: tcp
         to:
-          - service: caddy
+          - global: true
       - port: 1194
         as: 1194
         proto: udp
         to:
-          - service: caddy
+          - global: true
       - port: 500
         as: 500
         proto: udp
         to:
-          - service: caddy
+          - global: true
       - port: 4500
         as: 4500
         proto: udp
         to:
-          - service: caddy
+          - global: true
 
   # Frontend Service (Next.js App)
   frontend:
