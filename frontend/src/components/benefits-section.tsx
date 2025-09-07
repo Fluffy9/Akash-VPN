@@ -26,13 +26,13 @@ const benefits = [
   },
   {
     icon: Lock,
-    title: "Military-Grade Encryption",
-    description: "Your data is protected with AES-256 encryption and secure protocols."
+    title: "Strong Encryption",
+    description: "Your data is protected with AES-256-CBC encryption and secure protocols."
   },
   {
     icon: Globe,
     title: "Global Network",
-    description: "Access servers worldwide with unlimited bandwidth and server switching."
+    description: "Access servers in Wales, Texas, and Switzerland with easy server switching."
   }
 ];
 

@@ -14,20 +14,23 @@ This is the official documentation hub for **Akash VPN**, your decentralized, pr
 
 ## 🚀 What is Akash VPN?
 
-Akash VPN is a **VPN-as-a-Service (SaaS)** built on the **Akash Network**, a decentralized cloud marketplace. Instead of relying on a handful of centralized cloud providers, our VPN is deployed on independent nodes run by global providers — giving you:
+Akash VPN is a **decentralized VPN service** built on the **Akash Network**, a decentralized cloud marketplace. Instead of relying on a handful of centralized cloud providers, our VPN is deployed on independent nodes run by global providers — giving you:
 
-- 🔐 True privacy
-- 🌍 Global coverage
-- 💸 Affordable pricing
-- 🛠️ Open infrastructure
+- 🔐 True privacy with no-logs policy
+- 🌍 Global coverage across multiple continents
+- 💸 Cost-effective decentralized infrastructure
+- 🛠️ Open source and transparent
+- 🎯 Easy-to-use web interface with one-click downloads
 
 ---
 
-## 📄 What’s in this documentation?
+## 📄 What's in this documentation?
 
-Here’s what you’ll find:
+Here's what you'll find:
 
 - ✅ [FAQ](faq) — Beginner-friendly answers to common questions  
+- 🚀 [Getting Started Guide](getting-started) — How to download and connect to our VPN servers
+- 🌍 [Server Locations](server-locations) — Information about our global server network
 - ⚙️ Deployment guides (coming soon)  
 - 🛠️ Advanced provider/operator setup (coming soon)  
 - 📢 Updates, release notes, and news (coming soon)

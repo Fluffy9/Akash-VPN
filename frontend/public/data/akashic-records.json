@@ -5,15 +5,47 @@
       "continent_code": "GL",
       "countries": [
         {
-          "country": "Akash Network",
-          "country_code": "AKASH",
-          "flag": "🌐",
+          "country": "Belgium, Wales",
+          "country_code": "BE-WL",
+          "flag": "🇧🇪",
           "servers": [
             {
-              "region": "Default Server",
-              "hostname": "YOUR_VPN_IP_HERE",
-              "external_port": 1194,
-              "hub_name": "AKASH_HUB"
+              "region": "Wales Server",
+              "hostname": "k89011kb699hve79nhsh8u81v4.ingress.europlots.com",
+              "external_port": 32576,
+              "hub_name": "AKASH_HUB",
+              "ca_certificate": "-----BEGIN CERTIFICATE-----\nMIID9DCCAtygAwIBAgIBADANBgkqhkiG9w0BAQsFADB5MSIwIAYDVQQDDBlzb2Z0ZXRo\nZXItYzdjNWZmZmQ3LXRjZ2d2MSIwIAYDVQQKDBlzb2Z0ZXRoZXItYzdjNWZmZmQ3LXRj\nZ2d2MSIwIAYDVQQLDBlzb2Z0ZXRoZXItYzdjNWZmZmQ3LXRjZ2d2MQswCQYDVQQGEwJV\nUzAeFw0yNTA5MDcwMzA5MDRaFw0zNzEyMzEwMzA5MDRaMHkxIjAgBgNVBAMMGXNvZnRl\ndGhlci1jN2M1ZmZmZDctdGNnZ3YxIjAgBgNVBAoMGXNvZnRldGhlci1jN2M1ZmZmZDct\ndGNnZ3YxIjAgBgNVBAsMGXNvZnRldGhlci1jN2M1ZmZmZDctdGNnZ3YxCzAJBgNVBAYT\nAlVTMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvCvw45knEKPftn+3PqCu\nvu+PQdC5xO8h72EXp6VHxWa1XfKtb8EZ0EajzkMg9PNFkl8H/TI3ZXgT6/G4ROYhpRnV\n5SOg98eEkLRt5/J4DsO4RppJNk3n5wcoIirY9jNN+SmVNlFezUzWOAWkcfJXkWz3fx3X\nuUOnIHnmIe0r2QC50EEWaZN7VL+xOBplxMZVeHKcxCLlMb70cea6Z55/LLLag8JqiY5V\n2YFYy0kT4Us488wF6alheMVD46BKYWu/F3F2hzPydJq1pkZglkdvaTn9+L+HUT5T0hEm\naJKIX3Qy8dQZfLv+drA3gb4aA6GRK84oBrJ+F2Sh66tC2OxInwIDAQABo4GGMIGDMA8G\nA1UdEwEB/wQFMAMBAf8wCwYDVR0PBAQDAgH2MGMGA1UdJQRcMFoGCCsGAQUFBwMBBggr\nBgEFBQcDAgYIKwYBBQUHAwMGCCsGAQUFBwMEBggrBgEFBQcDBQYIKwYBBQUHAwYGCCsG\nAQUFBwMHBggrBgEFBQcDCAYIKwYBBQUHAwkwDQYJKoZIhvcNAQELBQADggEBAIj4JWi7\n7lfpNUQJ4cLstGX68bXXQi9AnyRaD56Ab3nkrehaz0HsdF2CMefBbaeY3l7RSAx4ymKJ\noISU3YgkJYnAlpFWHhFwnSedFvOP/UQbkXBSDH5f/xbtb1LM030ZlYMOJZddt9NFiUSH\nVvqXBGCoS1lFkYo+pc4RtKu4d37twLu8K4aOzvcscomCjsWsTx2d88vk8l2r4iRV0sv/\nu7WEmLjSrETGOvadmxjCkbP//kZopCZFP77Wf3MOk34ZvnRoOpWYLdklz4WpIl9g/nn9\nMWVCQ+sVPf+TsiGbXRHecvORsiA7HQK1rejfHWycTgBfSkXpye7oYvOhtZt+UfY=\n-----END CERTIFICATE-----",
+              "_comment": "VPN Credentials: Username: agony, Password: Passive-Reviver"
+            }
+          ]
+        },
+        {
+          "country": "United States",
+          "country_code": "US",
+          "flag": "🇺🇸",
+          "servers": [
+            {
+              "region": "Texas Server",
+              "hostname": "gj4kevgjh5b1f2codh186asmak.ingress.akashprovid.com",
+              "external_port": 31240,
+              "hub_name": "AKASH_HUB",
+              "ca_certificate": "-----BEGIN CERTIFICATE-----\nMIID+jCCAuKgAwIBAgIBADANBgkqhkiG9w0BAQsFADB8MSMwIQYDVQQDDBpzb2Z0\nZXRoZXItNTk5NDVkYjQ0OS1rcTdjNjEjMCEGA1UECgwac29mdGV0aGVyLTU5OTQ1\nZGI0NDkta3E3YzYxIzAhBgNVBAsMGnNvZnRldGhlci01OTk0NWRiNDQ5LWtxN2M2\nMQswCQYDVQQGEwJVUzAeFw0yNTA5MDcwNDEwNDZaFw0zNzEyMzEwNDEwNDZaMHwx\nIzAhBgNVBAMMGnNvZnRldGhlci01OTk0NWRiNDQ5LWtxN2M2MSMwIQYDVQQKDBpz\nb2Z0ZXRoZXItNTk5NDVkYjQ0OS1rcTdjNjEjMCEGA1UECwwac29mdGV0aGVyLTU5\nOTQ1ZGI0NDkta3E3YzYxCzAJBgNVBAYTAlVTMIIBIjANBgkqhkiG9w0BAQEFAAOC\nAQ8AMIIBCgKCAQEAqFMsKLHsTrP/phh0SsDoFyf+SJymGbyFMcvADMCvShpuwqAl\nXHkrA9sHLdPwbODK1wSu0lwI4KMZFX8WgL4KExkNlN4HyzWLF7aCGG2SL2QJTYQZ\nOF+W8bDnBDuxzRl518l1fZw1lYY2hu7Q28akmkCl5t7pxO0eo1bY67Jq5TkOLfwT\nR/b93m7jdEDWrjLZmJV6KuG2ThHVyc7sWtQANbLuPdb7uoNPQ3fWYalfQaL/OMSx\nVTlefMxDgxrlsTpTH1VTKYMsetsOdTXWVfxa5QiDFFMPoFt4IRMb4SlB+KB3OuE+\nX2uHTsvthKYzWoUhDm+ZDsRQMuRRnhOnYK7KeQIDAQABo4GGMIGDMA8GA1UdEwEB\n/wQFMAMBAf8wCwYDVR0PBAQDAgH2MGMGA1UdJQRcMFoGCCsGAQUFBwMBBggr\nBgEFBQcDAgYIKwYBBQUHAwMGCCsGAQUFBwMEBggrBgEFBQcDBQYIKwYBBQUHAwYGCCsG\nAQUFBwMHBggrBgEFBQcDCAYIKwYBBQUHAwkwDQYJKoZIhvcNAQELBQADggEBAG/6\ne2cBVkSK7/WAH0yB8pMn7/y1Y0R/PlXdtyF+QE+bw2IDnK1Lxxd8nYN+x0VmWXp3\nIsazJQDJj4PsgIGrHOZOh7PiP5JEMWmtkAEWkW9BzQKzezDql14wTiG/rfZAysqN\nmSGbX7Xc3HEEUvGlrjctEiZUfjsMwdtOfwdn7HFztM9Hal8fWmPfv7w/DTe2gBQS\nkTDJaImsQZrcMxlpPV9mkCc+j1pokbzoSIHk1EdFAu5rygHl8tVpXYNYA5LLuWrl\n7jBYYq1+aFZhE9m0+DPbYcpRNXJuVDbDDfYMQU/xJMqUvjyUxGlWnVqTsLzcD4Dj\n8qEUroABdM/Zqy2Hi1M=\n-----END CERTIFICATE-----",
+              "_comment": "VPN Credentials: Username: excusably, Password: Riverboat-Wrongful"
+            }
+          ]
+        },
+        {
+          "country": "Switzerland",
+          "country_code": "CH",
+          "flag": "🇨🇭",
+          "servers": [
+            {
+              "region": "Switzerland Server",
+              "hostname": "t72at2qcdpc15bvi7p1sghkmm8.ingress.d3akash.cloud",
+              "external_port": 30238,
+              "hub_name": "AKASH_HUB",
+              "ca_certificate": "-----BEGIN CERTIFICATE-----\nMIID+jCCAuKgAwIBAgIBADANBgkqhkiG9w0BAQsFADB8MSMwIQYDVQQDDBpzb2Z0\nZXRoZXItODVmZDViNTQ3Yy0yZHR6YjEjMCEGA1UECgwac29mdGV0aGVyLTg1ZmQ1\nYjU0N2MtMmR0emIxIzAhBgNVBAsMGnNvZnRldGhlci04NWZkNWI1NDdjLTJkdHpi\nMQswCQYDVQQGEwJVUzAeFw0yNTA5MDcwNDAxMjlaFw0zNzEyMzEwNDAxMjlaMHwx\nIzAhBgNVBAMMGnNvZnRldGhlci04NWZkNWI1NDdjLTJkdHpiMSMwIQYDVQQKDBpz\nb2Z0ZXRoZXItODVmZDViNTQ3Yy0yZHR6YjEjMCEGA1UECwwac29mdGV0aGVyLTg1\nZmQ1YjU0N2MtMmR0emIxCzAJBgNVBAYTAlVTMIIBIjANBgkqhkiG9w0BAQEFAAOC\nAQ8AMIIBCgKCAQEAreomkTWSTSQ9Go2fdLRdNfpehaSR5TWnobGFiyAyBtqqszVy\nlFVtsNJw43uAilLNY9PXuTbkXmuz0HkmizwSSikyiv4EAUHQtN6JQ/BGH06PFh9C\n52DFhthSCJ81SYEAM3bi+GTFf7y8mubDqLsmg8dM9pfcRjS0ygSEGLchbMJHKpSN\nWkfMwa0BnNq7adUrhZzDXK0s8C57fvTEMU9QOuJqL17UBiy71f6ZDuK6R+lFwhjo\nBiL7nQNgFlESfAYAiNr1xXfgAtGVL81egS5DUsBuHhd8DxwqZdRL25WPZ066xJRR\nj3Awzru45Fi748E62r3ZjlHmDL8uzIJAle2sUwIDAQABo4GGMIGDMA8GA1UdEwEB\n/wQFMAMBAf8wCwYDVR0PBAQDAgH2MGMGA1UdJQRcMFoGCCsGAQUFBwMBBggr\nBgEFBQcDAgYIKwYBBQUHAwMGCCsGAQUFBwMEBggrBgEFBQcDBQYIKwYBBQUHAwYGCCsG\nAQUFBwMHBggrBgEFBQcDCAYIKwYBBQUHAwkwDQYJKoZIhvcNAQELBQADggEBAJgD\n5Sh4H7g9EKDWjCLrQlO9nQVCmkUyeQVzrREo66W5R+NOruqOMacTbpZTxF3QRROi\n+oTa0RLlGlIbEpzM4oH8ivWkjj2zk17MhbUV0ftknIW4PL2QqpMkItxXjq6PJ0kE\nIfHz9iTp2NhvzRRN3p1qNOLNawB8eEW1/GmSIGdVPD8tWuXojIFgen75iBemKjAr\npyPHmDbaxU5m19F+aaRxiIZORjpf0gpfRW2VCo8UpWO6M9wliurLS11INWU2b7eE\nnoAoeGCevjsFnWCqBGf5i9YlJLDOreCHPNrqaxBV+pBS24jD0RIAGnU+JMEVJgtv\nv6GOFYPG+Eojs4cphRc=\n-----END CERTIFICATE-----",
+              "_comment": "VPN Credentials: Username: swab, Password: Had-Small"
             }
           ]
         }
