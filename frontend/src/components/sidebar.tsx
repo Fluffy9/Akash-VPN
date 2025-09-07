@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Moon, Sun, Shield, FileText, Zap, Github } from "lucide-react";
+import { Moon, Sun, Shield, FileText, Github } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 
 export function Sidebar() {

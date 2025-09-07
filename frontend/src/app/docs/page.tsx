@@ -65,10 +65,10 @@ export default function Docs() {
 
         <h2 className="text-2xl font-bold mb-2">Troubleshooting</h2>
         <p className="text-muted-foreground mb-4">
-          If you're having trouble connecting:
+          If you&apos;re having trouble connecting:
         </p>
         <ul className="list-disc list-inside mb-6 space-y-1">
-          <li>Make sure you're connected to the internet</li>
+          <li>Make sure you&apos;re connected to the internet</li>
           <li>Verify your credentials are correct</li>
           <li>Try a different server location</li>
           <li>Restart your OpenVPN client</li>
