@@ -38,7 +38,7 @@ export default function Docs() {
           We currently have active servers in:
         </p>
         <ul className="list-disc list-inside mb-6 space-y-1">
-          <li><strong>🇧🇪 Wales Server</strong> (Belgium/Wales)</li>
+          <li><strong>🇧🇪 Belgium Server</strong> (Belgium)</li>
           <li><strong>🇺🇸 Texas Server</strong> (United States)</li>
           <li><strong>🇨🇭 Switzerland Server</strong> (Switzerland)</li>
         </ul>
@@ -57,10 +57,10 @@ export default function Docs() {
           You can use any OpenVPN client to connect to Akash VPN. Here are some popular options:
         </p>
         <ul className="list-disc list-inside mb-6 space-y-1">
-          <li><Link href="https://openvpn.net/community-downloads/" className="underline hover:text-primary">OpenVPN Connect (Official)</Link></li>
-          <li><Link href="https://tunnelblick.net/" className="underline hover:text-primary">Tunnelblick (for macOS)</Link></li>
-          <li><Link href="https://openvpn.net/connect-docs/android-installation-guide.html" className="underline hover:text-primary">OpenVPN Connect (for Android)</Link></li>
-          <li><Link href="https://openvpn.net/connect-docs/ios-installation-guide.html" className="underline hover:text-primary">OpenVPN Connect (for iOS)</Link></li>
+          <li><Link href="https://openvpn.net/community-downloads/" className="underline hover:text-primary" target="_blank" rel="noopener noreferrer">OpenVPN Connect (Official)</Link></li>
+          <li><Link href="https://tunnelblick.net/" className="underline hover:text-primary" target="_blank" rel="noopener noreferrer">Tunnelblick (for macOS)</Link></li>
+          <li><Link href="https://openvpn.net/connect-docs/android-installation-guide.html" className="underline hover:text-primary" target="_blank" rel="noopener noreferrer">OpenVPN Connect (for Android)</Link></li>
+          <li><Link href="https://openvpn.net/connect-docs/ios-installation-guide.html" className="underline hover:text-primary" target="_blank" rel="noopener noreferrer">OpenVPN Connect (for iOS)</Link></li>
         </ul>
 
         <h2 className="text-2xl font-bold mb-2">Troubleshooting</h2>
@@ -77,7 +77,7 @@ export default function Docs() {
 
         <h2 className="text-2xl font-bold mb-2">Need More Help?</h2>
         <p className="text-muted-foreground mb-4">
-          For more detailed documentation, visit our <Link href="https://github.com/Fluffy9/Akash-VPN/tree/main/akash-vpn-docs" className="underline hover:text-primary">comprehensive documentation</Link> on GitHub.
+          For more detailed documentation, visit our <Link href="https://github.com/Fluffy9/Akash-VPN/tree/main/akash-vpn-docs" className="underline hover:text-primary" target="_blank" rel="noopener noreferrer">comprehensive documentation</Link> on GitHub.
         </p>
       </main>
     </div>

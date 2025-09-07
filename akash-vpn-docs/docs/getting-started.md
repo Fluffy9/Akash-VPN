@@ -32,7 +32,7 @@ Before you begin, you'll need:
 
 Visit our [main website](/) and you'll see three server options:
 
-- **🇧🇪 Wales Server** - Located in Belgium/Wales
+- **🇧🇪 Belgium Server** - Located in Belgium
 - **🇺🇸 Texas Server** - Located in the United States  
 - **🇨🇭 Switzerland Server** - Located in Switzerland
 

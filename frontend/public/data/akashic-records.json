@@ -5,12 +5,12 @@
       "continent_code": "GL",
       "countries": [
         {
-          "country": "Belgium, Wales",
+          "country": "Belgium",
           "country_code": "BE-WL",
           "flag": "🇧🇪",
           "servers": [
             {
-              "region": "Wales Server",
+              "region": "Belgium Server",
               "hostname": "k89011kb699hve79nhsh8u81v4.ingress.europlots.com",
               "external_port": 32576,
               "hub_name": "AKASH_HUB",

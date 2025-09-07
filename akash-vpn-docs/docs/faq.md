@@ -27,7 +27,7 @@ Here’s why people use VPNs every day:
 
 We currently have active servers in:
 
-* **Belgium/Wales** 🇧🇪 (Wales Server)
+* **Belgium** 🇧🇪 (Belgium Server)
 * **United States** 🇺🇸 (Texas Server)
 * **Switzerland** 🇨🇭 (Switzerland Server)
 

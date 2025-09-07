@@ -10,9 +10,9 @@ Our decentralized VPN network spans multiple continents, providing you with fast
 
 ---
 
-## 🇧🇪 Wales Server (Belgium/Wales)
+## 🇧🇪 Belgium Server
 
-**Location**: Belgium/Wales  
+**Location**: Belgium  
 **Provider**: Independent Akash Network Provider  
 **Status**: ✅ Active  
 **Protocol**: OpenVPN (TCP)  
