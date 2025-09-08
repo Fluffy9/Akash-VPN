@@ -108,4 +108,4 @@ See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for full guidelines.
 
 ## 🛡️ License
 
-MIT
+MIT License
