@@ -27,17 +27,29 @@ Here’s why people use VPNs every day:
 
 We currently have active servers in:
 
-* **United States** 🇺🇸 (New York, Texas, Wyoming, Florida, South Carolina)
-* **Spain** 🇪🇸 (Galicia)
-* **Germany** 🇩🇪 (Bavaria)
-* **Romania** 🇷🇴 (Dolj)
-* **Switzerland** 🇨🇭 (Bern)
+* **Belgium** 🇧🇪 (Belgium Server)
+* **United States** 🇺🇸 (Texas Server)
+* **Switzerland** 🇨🇭 (Switzerland Server)
 
-These are real, audited providers on the Akash Network — and we’re expanding all the time!
+These are real, audited providers on the Akash Network — and we're expanding all the time! Each server is independently deployed and managed, ensuring maximum privacy and reliability.
 
 ---
 
-### ⚠️ I’m having trouble connecting. What should I do?
+### 🚀 How do I get started with Akash VPN?
+
+Getting started is easy:
+
+1. **Visit our website** and choose your preferred server location
+2. **Click the download button** for your chosen region (Wales, Texas, or Switzerland)
+3. **Import the OpenVPN config** into your OpenVPN client
+4. **Enter your credentials** when prompted (username and password are displayed on our website)
+5. **Connect and enjoy** secure, private browsing!
+
+Each server has its own unique credentials for maximum security. We use username/password authentication - no client certificates are required.
+
+---
+
+### ⚠️ I'm having trouble connecting. What should I do?
 
 Here are a few quick things to try:
 
@@ -94,6 +106,12 @@ Generally, it’s not recommended to chain VPNs or proxies as it can cause conne
 ### 🤔 What makes Akash VPN different from other VPN services?
 
 Akash VPN runs on a **decentralized network**, meaning it doesn’t rely on any single company’s servers. This reduces risk of censorship, downtime, or data misuse, and increases privacy and control for you.
+
+---
+
+### 🔐 Do I need client certificates to connect?
+
+No! Akash VPN uses **username/password authentication** for simplicity and ease of use. The OpenVPN configuration files include server certificates for server verification, but you don't need to manage any client certificates. Just enter your username and password when prompted by your OpenVPN client.
 
 ---
 
