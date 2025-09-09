@@ -33,19 +33,27 @@ interface RegionsData {
 export function ConnectionControls() {
   const [regions, setRegions] = useState<RegionsData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [selectedServer, setSelectedServer] = useState<Server | null>(null);
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const [downloading, setDownloading] = useState<string | null>(null);
 
   useEffect(() => {
     fetch('/data/akashic-records.json')
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) throw new Error('Failed to load server data');
+        return response.json();
+      })
       .then(data => {
         console.log('Loaded regions data:', data);
-        console.log('Countries:', data?.regions?.[0]?.countries);
         setRegions(data);
-        setLoading(false);
+        setError(null);
       })
-      .catch(() => setLoading(false));
+      .catch(err => {
+        console.error('Failed to load regions:', err);
+        setError('Failed to load server locations. Please refresh the page.');
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   const downloadConfig = (server: Server) => {
@@ -81,10 +89,38 @@ verb 3
     URL.revokeObjectURL(url);
   };
 
-  const handleDownload = (server: Server) => {
-    downloadConfig(server);
-    setSelectedServer(server);
+  const handleDownload = async (server: Server) => {
+    try {
+      setDownloading(server.region);
+      await new Promise(resolve => setTimeout(resolve, 500)); // Brief loading state
+      downloadConfig(server);
+      setSelectedServer(server);
+    } catch (error) {
+      console.error('Download failed:', error);
+    } finally {
+      setDownloading(null);
+    }
   };
+
+  if (loading) {
+    return (
+      <div className="flex flex-col gap-4 items-center justify-center py-8">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+        <div className="text-center text-muted-foreground">Loading VPN servers...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-col gap-4 items-center justify-center py-8">
+        <div className="text-center text-red-500">{error}</div>
+        <Button onClick={() => window.location.reload()} variant="outline">
+          Retry
+        </Button>
+      </div>
+    );
+  }
 
   const copyToClipboard = (text: string, field: string) => {
     navigator.clipboard.writeText(text);
@@ -100,29 +136,26 @@ verb 3
     return null;
   };
 
-  if (loading) {
-    return (
-      <div className="flex flex-col gap-4 items-center justify-center">
-        <div className="text-center">Loading VPN configuration...</div>
-      </div>
-    );
-  }
-
   return (
-    <div className="flex flex-col gap-6 items-center justify-center">
+    <div className="flex flex-col gap-6 items-center justify-center mb-20 lg:mb-0">
       {/* Region Buttons */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-4xl">
-        {regions?.regions?.[0]?.countries?.flatMap((country) =>
-          country.servers.map((server, index) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 w-full max-w-4xl px-4">
+        {regions?.regions?.[0]?.countries?.flatMap((country: Country) =>
+          country.servers.map((server: Server, index: number) => (
             <Button
               key={`${country.country_code}-${index}`}
               onClick={() => handleDownload(server)}
+              disabled={downloading === server.region}
               size="lg"
-              className="px-6 py-4 text-lg font-semibold bg-primary hover:bg-primary/90 flex items-center justify-center gap-2"
+              className="px-4 py-6 sm:px-6 sm:py-4 text-base sm:text-lg font-semibold bg-primary hover:bg-primary/90 disabled:opacity-50 flex items-center justify-center gap-2 min-h-[4rem]"
             >
-              <span className="text-xl">{country.flag}</span>
-              <Download className="w-5 h-5" />
-              {server.region}
+              <span className="text-lg sm:text-xl">{country.flag}</span>
+              {downloading === server.region ? (
+                <div className="animate-spin rounded-full h-4 w-4 sm:h-5 sm:w-5 border-b-2 border-current"></div>
+              ) : (
+                <Download className="w-4 h-4 sm:w-5 sm:h-5" />
+              )}
+              <span className="truncate">{server.region}</span>
             </Button>
           ))
         )}
@@ -130,39 +163,41 @@ verb 3
 
       {/* Auth Info Display */}
       {selectedServer && (
-        <div className="bg-card border rounded-lg p-6 w-full max-w-2xl">
-          <h3 className="text-xl font-semibold mb-4 text-center">
+        <div className="bg-card border rounded-lg p-4 sm:p-6 w-full max-w-2xl mx-4">
+          <h3 className="text-lg sm:text-xl font-semibold mb-4 text-center">
             VPN Credentials for {selectedServer.region}
           </h3>
-          <div className="space-y-4">
-            <div className="flex items-center justify-between p-3 bg-muted rounded-lg">
-              <div>
+          <div className="space-y-3 sm:space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 bg-muted rounded-lg gap-2">
+              <div className="min-w-0 flex-1">
                 <p className="text-sm text-muted-foreground">Username</p>
-                <p className="font-mono text-lg">{extractCredentials(selectedServer._comment || '')?.username || 'N/A'}</p>
+                <p className="font-mono text-sm sm:text-base break-all">{extractCredentials(selectedServer._comment || '')?.username || 'N/A'}</p>
               </div>
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => copyToClipboard(extractCredentials(selectedServer._comment || '')?.username || '', 'username')}
+                className="shrink-0"
               >
                 {copiedField === 'username' ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
               </Button>
             </div>
-            <div className="flex items-center justify-between p-3 bg-muted rounded-lg">
-              <div>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 bg-muted rounded-lg gap-2">
+              <div className="min-w-0 flex-1">
                 <p className="text-sm text-muted-foreground">Password</p>
-                <p className="font-mono text-lg">{extractCredentials(selectedServer._comment || '')?.password || 'N/A'}</p>
+                <p className="font-mono text-sm sm:text-base break-all">{extractCredentials(selectedServer._comment || '')?.password || 'N/A'}</p>
               </div>
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => copyToClipboard(extractCredentials(selectedServer._comment || '')?.password || '', 'password')}
+                className="shrink-0"
               >
                 {copiedField === 'password' ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
               </Button>
             </div>
           </div>
-          <p className="text-sm text-muted-foreground mt-4 text-center">
+          <p className="text-xs sm:text-sm text-muted-foreground mt-4 text-center">
             Use these credentials when your OpenVPN client prompts for authentication.
           </p>
         </div>
