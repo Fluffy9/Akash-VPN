@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Moon, Sun, Shield, FileText, Zap, Github, Scale, Eye } from "lucide-react";
+import { Moon, Sun, Shield, FileText, Github, Scale, Eye } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
 import Image from "next/image";
 import akashLogo from "@/assets/akash-red-t.png";

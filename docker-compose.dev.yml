@@ -1,0 +1,46 @@
+services:
+  # Frontend Service (Next.js)
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000" # Expose frontend directly
+    environment:
+      - NODE_ENV=development
+      - NEXT_TELEMETRY_DISABLED=1
+      - WATCHPACK_POLLING=true
+      - HOSTNAME=0.0.0.0
+      - BACKEND_URL=http://backend:3000 # Using service name for Docker networking
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - backend
+    networks:
+      - akash-vpn-network
+
+  # Backend Service (Express.js)
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3001:3000" # Expose backend on port 3001
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    networks:
+      - akash-vpn-network
+
+volumes:
+  frontend_node_modules:
+  backend_node_modules:
+
+networks:
+  akash-vpn-network:
+    driver: bridge

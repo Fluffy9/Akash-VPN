@@ -2,19 +2,19 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
+router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
 /* GET status endpoint */
-router.get('/status', function (req, res) {
+router.get('/status', function(req, res) {
   res.send('hello world');
 });
 
 /* GET VPN configurations endpoint */
 router.get('/api/vpn-configs', function (req, res) {
   try {
-    // Build VPN configs from environment variables
+    // building VPN configs from environment variables
     const vpnConfigs = {
       regions: [
         {
@@ -71,7 +71,7 @@ router.get('/api/vpn-configs', function (req, res) {
       ]
     };
 
-    // Validate that required environment variables are present
+    // validating that required environment variables are present
     const requiredVars = [
       'BELGIUM_HOSTNAME', 'BELGIUM_PORT', 'BELGIUM_USERNAME', 'BELGIUM_PASSWORD',
       'US_HOSTNAME', 'US_PORT', 'US_USERNAME', 'US_PASSWORD',
