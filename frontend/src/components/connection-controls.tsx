@@ -39,7 +39,8 @@ export function ConnectionControls() {
   const [downloading, setDownloading] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/data/akashic-records.json')
+    // Fetch from server API instead of static JSON
+    fetch('/api/vpn-configs')
       .then(response => {
         if (!response.ok) throw new Error('Failed to load server data');
         return response.json();
@@ -91,7 +92,7 @@ verb 3
 
   const handleDownload = async (server: Server) => {
     try {
-      setDownloading(server.region);
+      setDownloading(server.hostname);
       await new Promise(resolve => setTimeout(resolve, 500)); // Brief loading state
       downloadConfig(server);
       setSelectedServer(server);
@@ -145,12 +146,12 @@ verb 3
             <Button
               key={`${country.country_code}-${index}`}
               onClick={() => handleDownload(server)}
-              disabled={downloading === server.region}
+              disabled={downloading === server.hostname}
               size="lg"
               className="px-4 py-6 sm:px-6 sm:py-4 text-base sm:text-lg font-semibold bg-primary hover:bg-primary/90 disabled:opacity-50 flex items-center justify-center gap-2 min-h-[4rem]"
             >
               <span className="text-lg sm:text-xl">{country.flag}</span>
-              {downloading === server.region ? (
+              {downloading === server.hostname ? (
                 <div className="animate-spin rounded-full h-4 w-4 sm:h-5 sm:w-5 border-b-2 border-current"></div>
               ) : (
                 <Download className="w-4 h-4 sm:w-5 sm:h-5" />

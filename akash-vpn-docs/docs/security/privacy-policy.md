@@ -192,8 +192,6 @@ We'll notify users of significant changes through our website and documentation.
 Questions about this Privacy Policy?
 
 - **Discord**: [Join our Discord server](https://discord.com/invite/akash)
-- **Email**: [Contact through our website](/contact)
-- **Documentation**: Check our [FAQ](../faq) for quick answers
 
 ---
 
