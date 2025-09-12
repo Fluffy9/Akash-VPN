@@ -40,7 +40,7 @@ RUN mkdir -p /app/public && \
 USER expressjs
 
 # Expose the port the app runs on
-EXPOSE 3000
+EXPOSE 3001
 
 # Health check to ensure the container is running properly
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
