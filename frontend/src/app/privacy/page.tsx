@@ -2,7 +2,7 @@
 
 import { Sidebar } from "@/components/sidebar";
 import { MobileNav } from "@/components/mobile-nav";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shield, Eye, Database, Lock, Globe, Calendar, Mail } from "lucide-react";
 
@@ -21,7 +21,7 @@ export default function PrivacyPolicy() {
 
       {/* Main Content */}
       <main className="lg:ml-64 min-h-screen flex flex-col p-6 lg:p-8 max-w-4xl">
-        
+
         {/* Header Section */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
@@ -33,7 +33,7 @@ export default function PrivacyPolicy() {
               <p className="text-muted-foreground text-lg">How we protect your privacy</p>
             </div>
           </div>
-          
+
           <div className="flex flex-wrap gap-3 mt-6">
             <Badge variant="secondary" className="flex items-center gap-2">
               <Eye className="w-3 h-3" />
@@ -60,7 +60,7 @@ export default function PrivacyPolicy() {
 
         {/* Privacy Policy Content */}
         <div className="space-y-8">
-          
+
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -70,9 +70,9 @@ export default function PrivacyPolicy() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed">
-                At Akash VPN, your privacy is our top priority. We are committed to providing a truly private VPN service 
-                that doesn't log, track, or store any of your online activities. This privacy policy explains how we handle 
-                your data (spoiler: we don't collect it).
+                At Akash VPN, your privacy is our top priority. We are committed to providing a truly private VPN service
+                that doesn&apos;t log, track, or store any of your online activities. This privacy policy explains how we handle
+                your data (spoiler: we don&apos;t collect it).
               </p>
             </CardContent>
           </Card>
@@ -81,7 +81,7 @@ export default function PrivacyPolicy() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Database className="w-5 h-5" />
-                Information We Don't Collect
+                Information We Don&apos;t Collect
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -100,11 +100,11 @@ export default function PrivacyPolicy() {
                     <li>Bandwidth usage</li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h4 className="font-semibold mb-2">No Personal Information</h4>
                   <p className="text-muted-foreground">
-                    We don't require registration, so we don't collect:
+                    We don&apos;t require registration, so we don&apos;t collect:
                   </p>
                   <ul className="list-disc pl-6 mt-2 text-muted-foreground space-y-1">
                     <li>Email addresses</li>
@@ -128,7 +128,7 @@ export default function PrivacyPolicy() {
             <CardContent>
               <div className="space-y-4">
                 <p className="text-muted-foreground leading-relaxed">
-                  Our VPN service is powered by the Akash Network, a decentralized cloud computing marketplace. 
+                  Our VPN service is powered by the Akash Network, a decentralized cloud computing marketplace.
                   This means:
                 </p>
                 <ul className="list-disc pl-6 text-muted-foreground space-y-1">
@@ -153,15 +153,15 @@ export default function PrivacyPolicy() {
                 <div>
                   <h4 className="font-semibold mb-2">Encryption</h4>
                   <p className="text-muted-foreground">
-                    All your internet traffic is encrypted using AES-256-CBC encryption, ensuring that even if 
+                    All your internet traffic is encrypted using AES-256-CBC encryption, ensuring that even if
                     intercepted, your data remains unreadable.
                   </p>
                 </div>
-                
+
                 <div>
                   <h4 className="font-semibold mb-2">No DNS Leaks</h4>
                   <p className="text-muted-foreground">
-                    Our VPN routes all DNS requests through our secure servers, preventing DNS leaks that 
+                    Our VPN routes all DNS requests through our secure servers, preventing DNS leaks that
                     could reveal your browsing activity.
                   </p>
                 </div>
@@ -175,7 +175,7 @@ export default function PrivacyPolicy() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                The only information we temporarily process is what's necessary for the VPN connection to function:
+                The only information we temporarily process is what&apos;s necessary for the VPN connection to function:
               </p>
               <ul className="list-disc pl-6 text-muted-foreground space-y-1">
                 <li>Server selection for connection routing</li>
@@ -194,8 +194,8 @@ export default function PrivacyPolicy() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed">
-                We don't share any data with third parties because we don't collect any data to share. 
-                We don't use analytics, tracking pixels, or any third-party services that could compromise your privacy.
+                We don&apos;t share any data with third parties because we don&apos;t collect any data to share.
+                We don&apos;t use analytics, tracking pixels, or any third-party services that could compromise your privacy.
               </p>
             </CardContent>
           </Card>
@@ -206,8 +206,8 @@ export default function PrivacyPolicy() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed">
-                Since we don't log or store any user activity data, we have nothing to provide to law enforcement 
-                or government agencies, even if legally compelled. We cannot share what we don't have.
+                Since we don&apos;t log or store any user activity data, we have nothing to provide to law enforcement
+                or government agencies, even if legally compelled. We cannot share what we don&apos;t have.
               </p>
             </CardContent>
           </Card>
@@ -218,8 +218,8 @@ export default function PrivacyPolicy() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed">
-                We may update this privacy policy from time to time. Any changes will be posted on this page 
-                with an updated "Last Modified" date. Since we don't collect contact information, we recommend 
+                We may update this privacy policy from time to time. Any changes will be posted on this page
+                with an updated &quot;Last Modified&quot; date. Since we don&apos;t collect contact information, we recommend
                 checking this page periodically for updates.
               </p>
             </CardContent>

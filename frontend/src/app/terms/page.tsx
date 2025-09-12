@@ -2,7 +2,7 @@
 
 import { Sidebar } from "@/components/sidebar";
 import { MobileNav } from "@/components/mobile-nav";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { FileText, AlertTriangle, Scale, Globe, Calendar, Shield } from "lucide-react";
 
@@ -21,7 +21,7 @@ export default function TermsOfUse() {
 
       {/* Main Content */}
       <main className="lg:ml-64 min-h-screen flex flex-col p-6 lg:p-8 max-w-4xl">
-        
+
         {/* Header Section */}
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-4">
@@ -33,7 +33,7 @@ export default function TermsOfUse() {
               <p className="text-muted-foreground text-lg">Service terms and conditions</p>
             </div>
           </div>
-          
+
           <div className="flex flex-wrap gap-3 mt-6">
             <Badge variant="secondary" className="flex items-center gap-2">
               <Scale className="w-3 h-3" />
@@ -60,15 +60,15 @@ export default function TermsOfUse() {
 
         {/* Terms Content */}
         <div className="space-y-8">
-          
+
           <Card>
             <CardHeader>
               <CardTitle>Acceptance of Terms</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed">
-                By using Akash VPN, you agree to be bound by these Terms of Use. If you do not agree 
-                to these terms, please do not use our service. These terms apply to all users of the 
+                By using Akash VPN, you agree to be bound by these Terms of Use. If you do not agree
+                to these terms, please do not use our service. These terms apply to all users of the
                 Akash VPN service.
               </p>
             </CardContent>
@@ -81,7 +81,7 @@ export default function TermsOfUse() {
             <CardContent>
               <div className="space-y-4">
                 <p className="text-muted-foreground leading-relaxed">
-                  Akash VPN is a free, open-source VPN service powered by the Akash Network's decentralized 
+                  Akash VPN is a free, open-source VPN service powered by the Akash Network&apos;s decentralized
                   infrastructure. We provide:
                 </p>
                 <ul className="list-disc pl-6 text-muted-foreground space-y-1">
@@ -104,7 +104,7 @@ export default function TermsOfUse() {
             <CardContent>
               <div className="space-y-4">
                 <p className="text-muted-foreground leading-relaxed">
-                  You agree to use Akash VPN responsibly and in accordance with applicable laws. 
+                  You agree to use Akash VPN responsibly and in accordance with applicable laws.
                   You may NOT use our service for:
                 </p>
                 <ul className="list-disc pl-6 text-muted-foreground space-y-1">
@@ -130,7 +130,7 @@ export default function TermsOfUse() {
             <CardContent>
               <div className="space-y-4">
                 <p className="text-muted-foreground leading-relaxed">
-                  Akash VPN is provided "as is" and "as available." We make no guarantees about:
+                  Akash VPN is provided &quot;as is&quot; and &quot;as available.&quot; We make no guarantees about:
                 </p>
                 <ul className="list-disc pl-6 text-muted-foreground space-y-1">
                   <li>100% uptime or service availability</li>
@@ -139,7 +139,7 @@ export default function TermsOfUse() {
                   <li>Compatibility with all devices or configurations</li>
                 </ul>
                 <p className="text-muted-foreground">
-                  Our servers run on decentralized infrastructure, which may experience occasional 
+                  Our servers run on decentralized infrastructure, which may experience occasional
                   downtime or maintenance periods.
                 </p>
               </div>
@@ -152,8 +152,8 @@ export default function TermsOfUse() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed">
-                We maintain a strict no-logs policy. We do not monitor, log, or store any of your 
-                online activities. For complete details about our privacy practices, please refer 
+                We maintain a strict no-logs policy. We do not monitor, log, or store any of your
+                online activities. For complete details about our privacy practices, please refer
                 to our Privacy Policy.
               </p>
             </CardContent>
@@ -166,7 +166,7 @@ export default function TermsOfUse() {
             <CardContent>
               <div className="space-y-4">
                 <p className="text-muted-foreground leading-relaxed">
-                  Akash VPN is open-source software. Our code is available under open-source licenses 
+                  Akash VPN is open-source software. Our code is available under open-source licenses
                   on GitHub. You are free to:
                 </p>
                 <ul className="list-disc pl-6 text-muted-foreground space-y-1">
@@ -186,7 +186,7 @@ export default function TermsOfUse() {
             <CardContent>
               <div className="space-y-4">
                 <p className="text-muted-foreground leading-relaxed">
-                  Akash VPN is provided free of charge. To the maximum extent permitted by law, 
+                  Akash VPN is provided free of charge. To the maximum extent permitted by law,
                   we disclaim all warranties and shall not be liable for:
                 </p>
                 <ul className="list-disc pl-6 text-muted-foreground space-y-1">
@@ -226,8 +226,8 @@ export default function TermsOfUse() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed">
-                We reserve the right to terminate access to our service for users who violate these 
-                terms. Since we don't track users, termination typically involves blocking specific 
+                We reserve the right to terminate access to our service for users who violate these
+                terms. Since we don&apos;t track users, termination typically involves blocking specific
                 IP addresses or implementing technical measures to prevent abuse.
               </p>
             </CardContent>
@@ -239,8 +239,8 @@ export default function TermsOfUse() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed">
-                These terms are governed by the laws of the jurisdiction where our primary operations 
-                are based. Any disputes shall be resolved through binding arbitration or in the courts 
+                These terms are governed by the laws of the jurisdiction where our primary operations
+                are based. Any disputes shall be resolved through binding arbitration or in the courts
                 of competent jurisdiction.
               </p>
             </CardContent>
@@ -252,8 +252,8 @@ export default function TermsOfUse() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed">
-                We may update these Terms of Use from time to time. Changes will be posted on this page 
-                with an updated "Last Modified" date. Continued use of the service after changes 
+                We may update these Terms of Use from time to time. Changes will be posted on this page
+                with an updated &quot;Last Modified&quot; date. Continued use of the service after changes
                 constitutes acceptance of the new terms.
               </p>
             </CardContent>

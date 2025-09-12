@@ -22,7 +22,7 @@ export default function Docs() {
 
       {/* Main Content */}
       <main className="lg:ml-64 min-h-screen flex flex-col p-6 lg:p-8 max-w-6xl">
-        
+
         {/* Header Section */}
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-4">
@@ -34,7 +34,7 @@ export default function Docs() {
               <p className="text-muted-foreground text-lg">Complete guide to our decentralized VPN service</p>
             </div>
           </div>
-          
+
           <div className="flex flex-wrap gap-3 mt-6">
             <Badge variant="secondary" className="flex items-center gap-2">
               <Shield className="w-3 h-3" />
@@ -168,7 +168,7 @@ export default function Docs() {
             Server Locations
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
+
             {/* Belgium Server */}
             <Card className="border-l-4 border-l-blue-500">
               <CardHeader>
@@ -327,7 +327,7 @@ export default function Docs() {
         {/* Detailed Setup Guide */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold mb-6">Detailed Setup Instructions</h2>
-          
+
           <div className="space-y-8">
             <Card>
               <CardHeader>
@@ -390,7 +390,7 @@ export default function Docs() {
                     <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm">1</div>
                     <div>
                       <div className="font-medium">Install OpenVPN Connect</div>
-                      <div className="text-sm text-muted-foreground mt-1">Download the official OpenVPN Connect app from your device's app store.</div>
+                      <div className="text-sm text-muted-foreground mt-1">Download the official OpenVPN Connect app from your device&apos;s app store.</div>
                     </div>
                   </li>
                   <li className="flex gap-4">
@@ -404,7 +404,7 @@ export default function Docs() {
                     <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-sm">3</div>
                     <div>
                       <div className="font-medium">Import Profile</div>
-                      <div className="text-sm text-muted-foreground mt-1">Open OpenVPN Connect, tap the "+" button, select "File" and choose your downloaded .ovpn file.</div>
+                      <div className="text-sm text-muted-foreground mt-1">Open OpenVPN Connect, tap the &quot;+&quot; button, select &quot;File&quot; and choose your downloaded .ovpn file.</div>
                     </div>
                   </li>
                   <li className="flex gap-4">
@@ -418,7 +418,7 @@ export default function Docs() {
                     <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">✓</div>
                     <div>
                       <div className="font-medium">Connect</div>
-                      <div className="text-sm text-muted-foreground mt-1">Tap the connect button and you're ready to browse securely!</div>
+                      <div className="text-sm text-muted-foreground mt-1">Tap the connect button and you&apos;re ready to browse securely!</div>
                     </div>
                   </li>
                 </ol>
@@ -523,8 +523,8 @@ export default function Docs() {
             Our community is here to help! Join our Discord server for real-time support, or check out our comprehensive documentation on GitHub.
           </p>
           <div className="flex flex-wrap mb-20 justify-center gap-4">
-            <Link 
-              href="https://discord.com/invite/akash" 
+            <Link
+              href="https://discord.com/invite/akash"
               target="_blank"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors"
             >
@@ -532,8 +532,8 @@ export default function Docs() {
               Discord Support
               <ExternalLink className="w-3 h-3" />
             </Link>
-            <Link 
-              href="https://github.com/Fluffy9/Akash-VPN/tree/main/akash-vpn-docs" 
+            <Link
+              href="https://github.com/Fluffy9/Akash-VPN/tree/main/akash-vpn-docs"
               target="_blank"
               className="inline-flex items-center gap-2 bg-slate-200 text-slate-900 px-6 py-3 rounded-lg hover:bg-slate-300 transition-colors"
             >

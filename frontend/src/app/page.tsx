@@ -3,7 +3,7 @@ import { ConnectionControls } from "@/components/connection-controls";
 import { BenefitsSection } from "@/components/benefits-section";
 import { MobileNav } from "@/components/mobile-nav";
 import { Button } from "@/components/ui/button";
-import { Shield, Download, Lock, Zap, Globe2, Star, ArrowRight } from "lucide-react";
+import { Shield, Download, Lock, Zap, Globe2, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
       <div className="hidden lg:block">
         <Sidebar />
       </div>
-      
+
       {/* Mobile Navigation */}
       <div className="lg:hidden">
         <MobileNav />
@@ -42,7 +42,7 @@ export default function Home() {
                     Your Privacy
                   </h1>
                   <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
-                    Professional-grade VPN service powered by Akash Network's decentralized infrastructure. 
+                    Professional-grade VPN service powered by Akash Network&apos;s decentralized infrastructure.
                     Download your OpenVPN config and connect instantly.
                   </p>
                 </div>
@@ -90,8 +90,8 @@ export default function Home() {
                 Choose Your Server Location
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Select a server location and download your OpenVPN configuration file. 
-                It's that simple – no registration required.
+                Select a server location and download your OpenVPN configuration file.
+                It&apos;s that simple – no registration required.
               </p>
             </div>
 
@@ -116,7 +116,7 @@ export default function Home() {
                   </div>
                   <h4 className="font-semibold">Install OpenVPN</h4>
                   <p className="text-sm text-muted-foreground">
-                    Install OpenVPN client on your device if you haven't already
+                    Install OpenVPN client on your device if you haven&apos;t already
                   </p>
                 </div>
                 <div className="text-center space-y-3">
@@ -180,7 +180,7 @@ export default function Home() {
             <Button size="lg" className="px-8 py-8 text-lg font-semibold" asChild>
               <a href="#download">
                 <Download className="w-5 h-5 mr-2" />
-                Download Now - It's Free
+                Download Now - It&apos;s Free
               </a>
             </Button>
           </div>
