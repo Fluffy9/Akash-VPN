@@ -23,7 +23,7 @@ export default function Home() {
       <main className="lg:ml-64 min-h-screen">
         {/* Hero Section */}
         <section className=" min-h-screen lg:h-screen overflow-hidden bg-gradient-to-br from-primary/5 via-background to-secondary/5">
-          <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+          <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none"></div>
           <div className="relative h-full flex items-center justify-center py-20 lg:py-0">
             <div className="max-w-6xl mx-auto px-4 text-center">
               <div className="space-y-4 lg:space-y-4">
