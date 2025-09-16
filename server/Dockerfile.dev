@@ -1,0 +1,29 @@
+# Development Dockerfile for Express.js
+FROM node:20-alpine
+
+# Install dependencies
+RUN apk add --no-cache libc6-compat
+
+WORKDIR /app
+
+# Copy package files first for better caching
+COPY package.json package-lock.json* ./
+
+# Install all dependencies (including dev dependencies)
+RUN npm ci
+
+# Copy the rest of the application code
+COPY . .
+
+# Set development environment
+ENV NODE_ENV=development
+ENV PORT=3000
+
+# Expose the port
+EXPOSE 3000
+
+# Install nodemon for hot reloading if not already in package.json
+RUN npm install -g nodemon
+
+# Start the development server with hot reloading
+CMD ["nodemon", "./bin/www"]

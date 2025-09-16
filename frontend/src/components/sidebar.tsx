@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Moon, Sun, Shield, FileText, Zap, Github } from "lucide-react";
+import { Moon, Sun, Shield, FileText, Github, Scale, Eye } from "lucide-react";
 import { useTheme } from "@/components/theme-provider";
+import Image from "next/image";
+import akashLogo from "@/assets/akash-red-t.png";
 
 export function Sidebar() {
   const { theme, setTheme } = useTheme();
@@ -17,8 +19,14 @@ export function Sidebar() {
       {/* Logo */}
       <div className="mb-8">
         <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">A</span>
+          <div className="w-8 h-8 flex items-center justify-center">
+            <Image 
+              src={akashLogo} 
+              alt="Akash VPN Logo" 
+              width={32} 
+              height={32}
+              className="w-8 h-8 object-contain"
+            />
           </div>
           <span className="font-bold text-xl">Akash VPN</span>
         </Link>
@@ -27,17 +35,34 @@ export function Sidebar() {
       {/* Navigation */}
       <nav className="flex-1 space-y-2">
         <Button variant="ghost" className="w-full justify-start gap-3" asChild>
-          <a href="/docs">
+          <Link href="/">
             <Shield className="w-4 h-4" />
-            About
-          </a>
+            Home
+          </Link>
         </Button>
         <Button variant="ghost" className="w-full justify-start gap-3" asChild>
-          <a href="/docs" target="_blank" rel="noopener noreferrer">
+          <Link href="/docs">
             <FileText className="w-4 h-4" />
-            Docs
-          </a>
+            Documentation
+          </Link>
         </Button>
+        
+        {/* Legal Pages */}
+        <div className="pt-4">
+          <div className="text-xs font-medium text-muted-foreground px-3 mb-2">Legal</div>
+          <Button variant="ghost" className="w-full justify-start gap-3" asChild>
+            <Link href="/privacy">
+              <Eye className="w-4 h-4" />
+              Privacy Policy
+            </Link>
+          </Button>
+          <Button variant="ghost" className="w-full justify-start gap-3" asChild>
+            <Link href="/terms">
+              <Scale className="w-4 h-4" />
+              Terms of Use
+            </Link>
+          </Button>
+        </div>
       </nav>
 
       {/* Footer */}
@@ -59,7 +84,7 @@ export function Sidebar() {
             </a>
           </Button>
           <Button variant="ghost" size="sm" className="flex-1" asChild>
-            <a href="https://github.com/Fluffy9/Akash-VPN/tree/main/akash-vpn-docs" target="_blank" rel="noopener noreferrer" title="Full Documentation">
+            <a href="/docs" title="Full Documentation">
               <FileText className="w-4 h-4" />
             </a>
           </Button>
