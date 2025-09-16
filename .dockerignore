@@ -4,9 +4,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
-
-# Development files
-environment.text
+server/.env
 
 # Git
 .git
@@ -15,7 +13,13 @@ environment.text
 
 # Documentation
 README.md
+CONTRIBUTING.md
 *.md
+docs/
+akash-vpn-docs/
+
+# Development files
+environment.text
 
 # IDE and editor files
 .vscode/
@@ -84,6 +88,22 @@ jspm_packages/
 .cache
 .parcel-cache
 
+# Next.js build output
+.next/
+out/
+
+# Nuxt.js build / generate output
+.nuxt
+dist
+
+# Gatsby files
+.cache/
+public
+
+# Storybook build outputs
+.out
+.storybook-out
+
 # Temporary folders
 tmp/
 temp/
@@ -105,5 +125,13 @@ __tests__/
 # Scripts
 *.sh
 
-# Deploy files
-deploy.yaml
+# Reference and design files
+reference/
+design-system/
+scopes/
+
+# VPN related files (if not needed in container)
+vpn/
+
+# Caddy files
+caddy/
