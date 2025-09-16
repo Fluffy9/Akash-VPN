@@ -84,7 +84,7 @@ export function Sidebar() {
             </a>
           </Button>
           <Button variant="ghost" size="sm" className="flex-1" asChild>
-            <a href="https://github.com/Fluffy9/Akash-VPN/tree/main/akash-vpn-docs" target="_blank" rel="noopener noreferrer" title="Full Documentation">
+            <a href="/docs" title="Full Documentation">
               <FileText className="w-4 h-4" />
             </a>
           </Button>
