@@ -3,8 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Download, Copy, Check, QrCode } from "lucide-react";
-import QRCode from "qrcode";
-import { generateVMessURL, generateServerQRCode, validateV2RayServer } from "@/lib/v2ray-generator";
+// V2Ray functionality moved to server-side
 
 interface V2RayConfig {
   uuid: string;
@@ -102,27 +101,24 @@ verb 3
   };
 
   const handleV2RayQR = async (server: Server) => {
-    if (validateV2RayServer(server)) {
-      const url = generateVMessURL(server);
-      setVmessUrl(url);
-      setSelectedServer(server);
-      setShowQRCode(true);
-      
+    if (server.v2ray) {
       try {
-        const qrDataUrl = await QRCode.toDataURL(url, {
-          width: 200,
-          margin: 1,
-          color: {
-            dark: '#000000',
-            light: '#FFFFFF'
-          }
-        });
-        setQrCodeDataUrl(qrDataUrl);
+        const response = await fetch(`/api/v2ray-qr/${server.hostname}`);
+        const data = await response.json();
+
+        if (data.success) {
+          setVmessUrl(data.data.vmessUrl);
+          setQrCodeDataUrl(data.data.qrCode);
+          setSelectedServer(server);
+          setShowQRCode(true);
+        } else {
+          console.error('Failed to generate QR code:', data.message);
+        }
       } catch (error) {
-        console.error('Error generating QR code:', error);
+        console.error('Error calling V2Ray API:', error);
       }
     } else {
-      console.error('Invalid V2Ray server configuration');
+      console.error('V2Ray not configured for this server');
     }
   };
 
@@ -168,7 +164,7 @@ verb 3
                   <Download className="w-4 h-4" />
                   OpenVPN
                 </Button>
-                {server.v2ray && validateV2RayServer(server) && (
+                {server.v2ray && (
                   <Button
                     onClick={() => handleV2RayQR(server)}
                     size="sm"
@@ -197,9 +193,9 @@ verb 3
               <div className="flex flex-col items-center gap-4">
                 <div className="bg-white p-4 rounded-lg">
                   {qrCodeDataUrl ? (
-                    <img 
-                      src={qrCodeDataUrl} 
-                      alt="V2Ray QR Code" 
+                    <img
+                      src={qrCodeDataUrl}
+                      alt="V2Ray QR Code"
                       className="w-48 h-48 mx-auto"
                     />
                   ) : (
