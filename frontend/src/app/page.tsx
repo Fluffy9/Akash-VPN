@@ -1,3 +1,5 @@
+"use client";
+
 import { Sidebar } from "@/components/sidebar";
 import { ConnectionControls } from "@/components/connection-controls";
 import { BenefitsSection } from "@/components/benefits-section";
@@ -5,8 +7,40 @@ import { MobileNav } from "@/components/mobile-nav";
 import { Button } from "@/components/ui/button";
 import { Shield, Download, Lock, Zap, Globe2, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import { API_ENDPOINTS } from "@/config/api";
+
+interface Stats {
+  uptime: string;
+  logsStored: number;
+  globalLocations: number;
+  protection: string;
+}
 
 export default function Home() {
+  const [stats, setStats] = useState<Stats>({
+    uptime: "99.9%",
+    logsStored: 0,
+    globalLocations: 0,
+    protection: "24/7"
+  });
+
+  useEffect(() => {
+    // Fetch stats from backend
+    const apiUrl = API_ENDPOINTS.stats();
+
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          setStats(data.stats);
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching stats:', error);
+        // Keep default stats if fetch fails
+      });
+  }, []);
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Desktop Sidebar */}
@@ -149,19 +183,19 @@ export default function Home() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               <div className="space-y-2">
-                <div className="text-3xl font-bold text-primary">99.9%</div>
+                <div className="text-3xl font-bold text-primary">{stats.uptime}</div>
                 <div className="text-sm text-muted-foreground">Uptime</div>
               </div>
               <div className="space-y-2">
-                <div className="text-3xl font-bold text-primary">0</div>
+                <div className="text-3xl font-bold text-primary">{stats.logsStored}</div>
                 <div className="text-sm text-muted-foreground">Logs Stored</div>
               </div>
               <div className="space-y-2">
-                <div className="text-3xl font-bold text-primary">3</div>
+                <div className="text-3xl font-bold text-primary">{stats.globalLocations}</div>
                 <div className="text-sm text-muted-foreground">Global Locations</div>
               </div>
               <div className="space-y-2">
-                <div className="text-3xl font-bold text-primary">24/7</div>
+                <div className="text-3xl font-bold text-primary">{stats.protection}</div>
                 <div className="text-sm text-muted-foreground">Protection</div>
               </div>
             </div>

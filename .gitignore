@@ -17,6 +17,9 @@ dist/
 .env.production.local
 server/.env
 
+# Local deployment files with sensitive data
+deploy.local.yml
+
 # IDE files
 .vscode/
 .idea/

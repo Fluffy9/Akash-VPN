@@ -6,6 +6,9 @@
 .env.production.local
 server/.env
 
+# Local deployment files with sensitive data
+deploy.local.yml
+
 # Git
 .git
 .gitignore
