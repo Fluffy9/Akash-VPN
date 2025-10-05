@@ -13,7 +13,14 @@ var app = express();
 
 // Enable CORS for all routes
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:4000',
+  origin: (origin, callback) => {
+    // Allow all localhost origins in development
+    if (!origin || origin.startsWith('http://localhost:') || origin.startsWith('https://localhost:')) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 
