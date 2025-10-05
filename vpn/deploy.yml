@@ -1,6 +1,5 @@
 ---
 version: "2.0"
-
 services:
   softether:
     image: andrey01/softether:4.38-9760-2
@@ -36,26 +35,52 @@ services:
         proto: udp
         to:
           - global: true
-
+  app:
+    image: declab/v2ray:0.2
+    env:
+      - "ID=7142a3f6-5788-4c91-839a-25b06fe58f4b"
+    expose:
+      - port: 1010
+        as: 1010
+        to:
+          - global: true
+      - port: 1080
+        as: 1080
+        to:
+          - global: true
 profiles:
   compute:
     softether:
       resources:
         cpu:
-          units: 1.0
+          units: 1
         memory:
           size: 512Mi
         storage:
           size: 512Mi
+    app:
+      resources:
+        cpu:
+          units: 0.5
+        memory:
+          size: 256Mi
+        storage:
+          size: 256Mi
   placement:
-    akash:
+    dcloud:
       pricing:
         softether:
           denom: uakt
-          amount: 10000
-
+          amount: 100000
+        app:
+          denom: uakt
+          amount: 100000
 deployment:
   softether:
-    akash:
+    dcloud:
       profile: softether
+      count: 1
+  app:
+    dcloud:
+      profile: app
       count: 1

@@ -1,0 +1,125 @@
+---
+version: "2.0"
+services:
+  frontend:
+    image: ghcr.io/fluffy9/akash-vpn-frontend:latest
+    env:
+      - "NODE_ENV=production"
+      - "NEXT_TELEMETRY_DISABLED=1"
+      - "NEXT_PUBLIC_API_URL=/api/regions"
+      - "NEXT_PUBLIC_BACKEND_PORT=3000"
+    expose:
+      - port: 3000
+        as: 80
+        to:
+          - global: true
+  backend:
+    image: ghcr.io/fluffy9/akash-vpn-backend:latest
+    env:
+      - "NODE_ENV=production"
+      - "PORT=3000"
+      - "FRONTEND_URL=https://your-domain.com"
+      - "BELGIUM_HOSTNAME=your_belgium_hostname"
+      - "BELGIUM_PORT=1194"
+      - "BELGIUM_USERNAME=your_belgium_username"
+      - "BELGIUM_PASSWORD=your_belgium_password"
+      - "BELGIUM_ADMIN_PASSWORD=your_belgium_admin_password"
+      - "BELGIUM_HUB_PASSWORD=your_belgium_hub_password"
+      - "BELGIUM_L2TP_PSK=your_belgium_l2tp_psk"
+      - "BELGIUM_L2TP_PHASE1_ALGORITHMS=aes128-sha1-modp2048"
+      - "BELGIUM_L2TP_PHASE2_ALGORITHMS=aes128-sha1"
+      - "BELGIUM_CA_CERT=your_belgium_ca_certificate"
+      - "BELGIUM_V2RAY_UUID=your_belgium_v2ray_uuid"
+      - "BELGIUM_V2RAY_PORT=1010"
+      - "AUSTRALIA_HOSTNAME=your_australia_hostname"
+      - "AUSTRALIA_PORT=1194"
+      - "AUSTRALIA_USERNAME=your_australia_username"
+      - "AUSTRALIA_PASSWORD=your_australia_password"
+      - "AUSTRALIA_ADMIN_PASSWORD=your_australia_admin_password"
+      - "AUSTRALIA_HUB_PASSWORD=your_australia_hub_password"
+      - "AUSTRALIA_L2TP_PSK=your_australia_l2tp_psk"
+      - "AUSTRALIA_L2TP_PHASE1_ALGORITHMS=aes128-sha1-modp2048"
+      - "AUSTRALIA_L2TP_PHASE2_ALGORITHMS=aes128-sha1"
+      - "AUSTRALIA_CA_CERT=your_australia_ca_certificate"
+      - "AUSTRALIA_V2RAY_UUID=your_australia_v2ray_uuid"
+      - "AUSTRALIA_V2RAY_PORT=1010"
+      - "SOUTH_CAROLINA_HOSTNAME=your_south_carolina_hostname"
+      - "SOUTH_CAROLINA_PORT=1194"
+      - "SOUTH_CAROLINA_USERNAME=your_south_carolina_username"
+      - "SOUTH_CAROLINA_PASSWORD=your_south_carolina_password"
+      - "SOUTH_CAROLINA_ADMIN_PASSWORD=your_south_carolina_admin_password"
+      - "SOUTH_CAROLINA_HUB_PASSWORD=your_south_carolina_hub_password"
+      - "SOUTH_CAROLINA_L2TP_PSK=your_south_carolina_l2tp_psk"
+      - "SOUTH_CAROLINA_L2TP_PHASE1_ALGORITHMS=aes128-sha1-modp2048"
+      - "SOUTH_CAROLINA_L2TP_PHASE2_ALGORITHMS=aes128-sha1"
+      - "SOUTH_CAROLINA_CA_CERT=your_south_carolina_ca_certificate"
+      - "SOUTH_CAROLINA_V2RAY_UUID=your_south_carolina_v2ray_uuid"
+      - "SOUTH_CAROLINA_V2RAY_PORT=1010"
+    expose:
+      - port: 3000
+        as: 3000
+        to:
+          - global: true
+  caddy:
+    image: caddy:2-alpine
+    expose:
+      - port: 80
+        as: 80
+        to:
+          - global: true
+      - port: 443
+        as: 443
+        to:
+          - global: true
+
+profiles:
+  compute:
+    frontend:
+      resources:
+        cpu:
+          units: 0.5
+        memory:
+          size: 512Mi
+        storage:
+          size: 512Mi
+    backend:
+      resources:
+        cpu:
+          units: 0.5
+        memory:
+          size: 512Mi
+        storage:
+          size: 512Mi
+    caddy:
+      resources:
+        cpu:
+          units: 0.25
+        memory:
+          size: 256Mi
+        storage:
+          size: 256Mi
+  placement:
+    akash:
+      pricing:
+        frontend:
+          denom: uakt
+          amount: 5000
+        backend:
+          denom: uakt
+          amount: 5000
+        caddy:
+          denom: uakt
+          amount: 2500
+deployment:
+  frontend:
+    akash:
+      profile: frontend
+      count: 1
+  backend:
+    akash:
+      profile: backend
+      count: 1
+  caddy:
+    akash:
+      profile: caddy
+      count: 1

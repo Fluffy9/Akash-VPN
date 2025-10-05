@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Download, Copy, Check, QrCode } from "lucide-react";
+import { API_ENDPOINTS } from "@/config/api";
 // V2Ray functionality moved to server-side
 
 interface V2RayConfig {
@@ -50,39 +51,71 @@ export function ConnectionControls() {
   const [qrCodeDataUrl, setQrCodeDataUrl] = useState<string>("");
 
   useEffect(() => {
-    fetch('/data/akashic-records.json')
-      .then(response => response.json())
-      .then(data => {
-        console.log('Loaded regions data:', data);
+    const fetchRegions = async () => {
+      try {
+        // Use centralized API configuration
+        const apiUrl = API_ENDPOINTS.regions();
+
+        console.log('Fetching from:', apiUrl);
+        const response = await fetch(apiUrl);
+        console.log('Response status:', response.status);
+        console.log('Response headers:', response.headers);
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error('Response error:', errorText);
+          console.error('Full response:', response);
+          throw new Error(`HTTP ${response.status}: ${errorText}`);
+        }
+
+        const data = await response.json();
+        console.log('Loaded regions data from backend:', data);
         console.log('Countries:', data?.regions?.[0]?.countries);
         setRegions(data);
         setLoading(false);
-      })
-      .catch(() => setLoading(false));
+      } catch (error) {
+        console.error('Error fetching regions data:', error);
+        console.error('Error details:', {
+          message: error.message,
+          stack: error.stack,
+          name: error.name
+        });
+
+        // No fallback - rely entirely on API
+
+        setLoading(false);
+      }
+    };
+
+    fetchRegions();
   }, []);
 
   const downloadConfig = (server: Server) => {
-    let configContent = `client
+    let configContent = `# --------------------- CUT HERE -------------------------------
 dev tun
 proto tcp
 remote ${server.hostname} ${server.external_port}
+cipher AES-256-CBC
+auth SHA1
 resolv-retry infinite
 nobind
 persist-key
 persist-tun
-cipher AES-256-CBC
-auth SHA1
-auth-user-pass
+client
 verb 3
+auth-user-pass
 `;
 
     // Add CA certificate if available
     if (server.ca_certificate) {
-      configContent += `\n<ca>\n${server.ca_certificate}\n</ca>\n`;
+      configContent += `<ca>\n${server.ca_certificate}\n</ca>\n`;
       console.log('CA certificate added to config');
     } else {
       console.log('No CA certificate found');
     }
+
+    configContent += `# --------------------- CUT HERE -------------------------------`;
+
     const blob = new Blob([configContent], { type: 'application/x-openvpn-profile' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -103,7 +136,10 @@ verb 3
   const handleV2RayQR = async (server: Server) => {
     if (server.v2ray) {
       try {
-        const response = await fetch(`/api/v2ray-qr/${server.hostname}`);
+        // Use the same API configuration as regions endpoint but replace the path
+        const baseUrl = API_ENDPOINTS.regions().replace('/api/regions', '');
+        const apiUrl = `${baseUrl}/api/v2ray-qr/${server.hostname}`;
+        const response = await fetch(apiUrl);
         const data = await response.json();
 
         if (data.success) {
@@ -140,6 +176,19 @@ verb 3
     return (
       <div className="flex flex-col gap-4 items-center justify-center">
         <div className="text-center">Loading VPN configuration...</div>
+      </div>
+    );
+  }
+
+  if (!regions) {
+    return (
+      <div className="flex flex-col gap-4 items-center justify-center">
+        <div className="text-center text-red-500">
+          Failed to load VPN configuration. Please check if the backend server is running.
+        </div>
+        <div className="text-sm text-muted-foreground">
+          Make sure the backend server is running on the correct port and the API endpoints are accessible.
+        </div>
       </div>
     );
   }
