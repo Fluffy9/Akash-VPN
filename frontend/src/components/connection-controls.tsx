@@ -91,7 +91,7 @@ export function ConnectionControls() {
   }, []);
 
   const downloadConfig = (server: Server) => {
-    let configContent = `# --------------------- CUT HERE -------------------------------
+    let configContent = `# ${server.region.toLowerCase().replace(/\s+/g, '-')}.ovpn
 dev tun
 proto tcp
 remote ${server.hostname} ${server.external_port}
@@ -104,17 +104,10 @@ persist-tun
 client
 verb 3
 auth-user-pass
+<ca>
+${server.ca_certificate}
+</ca>
 `;
-
-    // Add CA certificate if available
-    if (server.ca_certificate) {
-      configContent += `<ca>\n${server.ca_certificate}\n</ca>\n`;
-      console.log('CA certificate added to config');
-    } else {
-      console.log('No CA certificate found');
-    }
-
-    configContent += `# --------------------- CUT HERE -------------------------------`;
 
     const blob = new Blob([configContent], { type: 'application/x-openvpn-profile' });
     const url = URL.createObjectURL(blob);

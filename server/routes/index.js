@@ -48,8 +48,14 @@ router.get('/api/v2ray-qr/:serverId', async function (req, res) {
         return cert;
       }
 
+      // Clean the certificate data more aggressively
+      // Remove all whitespace, line breaks, and non-base64 characters
+      let cleanCert = cert.replace(/[^A-Za-z0-9+/=]/g, '');
+
+      // Don't remove padding characters - they're essential for base64
+
       // Format the certificate with proper line breaks (64 characters per line)
-      const formatted = cert.replace(/(.{64})/g, '$1\n');
+      const formatted = cleanCert.replace(/(.{64})/g, '$1\n');
       return `-----BEGIN CERTIFICATE-----\n${formatted}\n-----END CERTIFICATE-----`;
     };
 
@@ -254,8 +260,14 @@ router.get('/api/regions', (req, res) => {
         return cert;
       }
 
+      // Clean the certificate data more aggressively
+      // Remove all whitespace, line breaks, and non-base64 characters
+      let cleanCert = cert.replace(/[^A-Za-z0-9+/=]/g, '');
+
+      // Don't remove padding characters - they're essential for base64
+
       // Format the certificate with proper line breaks (64 characters per line)
-      const formatted = cert.replace(/(.{64})/g, '$1\n');
+      const formatted = cleanCert.replace(/(.{64})/g, '$1\n');
       return `-----BEGIN CERTIFICATE-----\n${formatted}\n-----END CERTIFICATE-----`;
     };
 
@@ -327,6 +339,30 @@ router.get('/api/regions', (req, res) => {
           v2ray: hasRealV2RayUUID(getEnvVar('SOUTH_CAROLINA_V2RAY_UUID')) ? {
             uuid: getEnvVar('SOUTH_CAROLINA_V2RAY_UUID'),
             ports: [safeParseInt(process.env.SOUTH_CAROLINA_V2RAY_PORT, 1010)],
+            protocol: "vmess",
+            security: "auto",
+            network: "tcp"
+          } : null
+        }]
+      });
+    }
+
+    // Switzerland Server
+    if (getEnvVar('SWITZERLAND_HOSTNAME')) {
+      countries.push({
+        country: "Switzerland",
+        country_code: "CH",
+        flag: "🇨🇭",
+        servers: [{
+          region: "Switzerland Server",
+          hostname: getEnvVar('SWITZERLAND_HOSTNAME'),
+          external_port: safeParseInt(process.env.SWITZERLAND_PORT, 1194),
+          hub_name: "AKASH_HUB",
+          ca_certificate: formatCACertificate(getEnvVar('SWITZERLAND_CA_CERT')),
+          _comment: `VPN Credentials: Username: ${getEnvVar('SWITZERLAND_USERNAME', 'N/A')}, Password: ${getEnvVar('SWITZERLAND_PASSWORD', 'N/A')}`,
+          v2ray: hasRealV2RayUUID(getEnvVar('SWITZERLAND_V2RAY_UUID')) ? {
+            uuid: getEnvVar('SWITZERLAND_V2RAY_UUID'),
+            ports: [safeParseInt(process.env.SWITZERLAND_V2RAY_PORT, 1010)],
             protocol: "vmess",
             security: "auto",
             network: "tcp"
