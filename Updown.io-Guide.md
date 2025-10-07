@@ -27,7 +27,7 @@ Create the health check endpoint in your Next.js frontend:
 mkdir -p frontend/src/app/health
 ```
 
-Copy the `health/route.ts` file to `frontend/src/app/api/health/route.ts`
+Copy the `health/route.ts` file to `frontend/src/app/health/route.ts`
 
 **Important**: Update the `loadVPNRegions()` function to match your actual `akashic-records.json` structure.
 

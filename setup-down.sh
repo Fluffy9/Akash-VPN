@@ -1,5 +1,5 @@
 #!/bin/bash
-# setup-updown.sh
+# setup-down.sh
 # Script to configure updown.io monitoring for Akash VPN
 
 set -e
@@ -89,5 +89,5 @@ echo "3. Enable public status page if desired"
 echo "4. Update the Status component with your check tokens"
 echo ""
 echo "To add region-specific monitoring, run:"
-echo "  ./setup-updown.sh add-region <region-url> <region-name>"
+echo "./setup-down.sh add-region <region-url> <region-name>
 echo ""
