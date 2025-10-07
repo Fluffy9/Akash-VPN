@@ -134,7 +134,7 @@ docker push your-docker-username/akash-vpn-frontend:latest
 3. Test the health endpoint:
 
 ```bash
-curl https://your-frontend.akash.network/api/health
+curl https://your-frontend.akash.network/health
 ```
 
 Expected response:
