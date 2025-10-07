@@ -61,7 +61,8 @@ Example `akashic-records.json` structure:
 
 ```bash
 # Make it executable
-chmod +x setup-updown.sh
+chmod +x setup-down.sh
+./setup-down.sh
 
 # Set your configuration
 export UPDOWN_API_KEY="your-api-key-here"
@@ -72,7 +73,7 @@ export FRONTEND_URL="https://your-frontend.akash.network"
 ```
 
 This will create two checks:
-- **Main Health Check**: Monitors `/api/health` endpoint (all regions)
+- **Main Health Check**: Monitors `/health` endpoint (all regions)
 - **Frontend Check**: Monitors main website availability
 
 ### Step 3: Configure Alerting
