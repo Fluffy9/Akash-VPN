@@ -87,53 +87,6 @@ router.get('/api/v2ray-qr/:serverId', async function (req, res) {
     }
 
 
-    // Australia Server
-    if (getEnvVar('AUSTRALIA_HOSTNAME')) {
-      countries.push({
-        country: "Australia",
-        country_code: "AU",
-        flag: "🇦🇺",
-        servers: [{
-          region: "Australia Server",
-          hostname: getEnvVar('AUSTRALIA_HOSTNAME'),
-          external_port: safeParseInt(process.env.AUSTRALIA_PORT, 1194),
-          hub_name: "AKASH_HUB",
-          ca_certificate: formatCACertificate(getEnvVar('AUSTRALIA_CA_CERT')),
-          _comment: `VPN Credentials: Username: ${getEnvVar('AUSTRALIA_USERNAME', 'N/A')}, Password: ${getEnvVar('AUSTRALIA_PASSWORD', 'N/A')}`,
-          v2ray: hasRealV2RayUUID(getEnvVar('AUSTRALIA_V2RAY_UUID')) ? {
-            uuid: getEnvVar('AUSTRALIA_V2RAY_UUID'),
-            ports: [safeParseInt(process.env.AUSTRALIA_V2RAY_PORT, 1010)],
-            protocol: "vmess",
-            security: "auto",
-            network: "tcp"
-          } : null
-        }]
-      });
-    }
-
-    // South Carolina Server
-    if (getEnvVar('SOUTH_CAROLINA_HOSTNAME')) {
-      countries.push({
-        country: "United States",
-        country_code: "US-SC",
-        flag: "🇺🇸",
-        servers: [{
-          region: "South Carolina Server",
-          hostname: getEnvVar('SOUTH_CAROLINA_HOSTNAME'),
-          external_port: safeParseInt(process.env.SOUTH_CAROLINA_PORT, 1194),
-          hub_name: "AKASH_HUB",
-          ca_certificate: formatCACertificate(getEnvVar('SOUTH_CAROLINA_CA_CERT')),
-          _comment: `VPN Credentials: Username: ${getEnvVar('SOUTH_CAROLINA_USERNAME', 'N/A')}, Password: ${getEnvVar('SOUTH_CAROLINA_PASSWORD', 'N/A')}`,
-          v2ray: hasRealV2RayUUID(getEnvVar('SOUTH_CAROLINA_V2RAY_UUID')) ? {
-            uuid: getEnvVar('SOUTH_CAROLINA_V2RAY_UUID'),
-            ports: [safeParseInt(process.env.SOUTH_CAROLINA_V2RAY_PORT, 1010)],
-            protocol: "vmess",
-            security: "auto",
-            network: "tcp"
-          } : null
-        }]
-      });
-    }
 
     // Find the server by hostname
     let selectedServer = null;
@@ -209,14 +162,6 @@ router.get('/api/v2ray-qr/:serverId', async function (req, res) {
 });
 
 // Health check endpoint
-router.get('/api/health', (req, res) => {
-  console.log('API /api/health called');
-  res.json({
-    success: true,
-    message: 'Backend server is running',
-    timestamp: new Date().toISOString()
-  });
-});
 
 // API endpoint for regions data
 router.get('/api/regions', (req, res) => {
@@ -298,55 +243,6 @@ router.get('/api/regions', (req, res) => {
       });
     }
 
-
-    // Australia Server
-    if (getEnvVar('AUSTRALIA_HOSTNAME')) {
-      countries.push({
-        country: "Australia",
-        country_code: "AU",
-        flag: "🇦🇺",
-        servers: [{
-          region: "Australia Server",
-          hostname: getEnvVar('AUSTRALIA_HOSTNAME'),
-          external_port: safeParseInt(process.env.AUSTRALIA_PORT, 1194),
-          hub_name: "AKASH_HUB",
-          ca_certificate: formatCACertificate(getEnvVar('AUSTRALIA_CA_CERT')),
-          _comment: `VPN Credentials: Username: ${getEnvVar('AUSTRALIA_USERNAME', 'N/A')}, Password: ${getEnvVar('AUSTRALIA_PASSWORD', 'N/A')}`,
-          v2ray: hasRealV2RayUUID(getEnvVar('AUSTRALIA_V2RAY_UUID')) ? {
-            uuid: getEnvVar('AUSTRALIA_V2RAY_UUID'),
-            ports: [safeParseInt(process.env.AUSTRALIA_V2RAY_PORT, 1010)],
-            protocol: "vmess",
-            security: "auto",
-            network: "tcp"
-          } : null
-        }]
-      });
-    }
-
-    // South Carolina Server
-    if (getEnvVar('SOUTH_CAROLINA_HOSTNAME')) {
-      countries.push({
-        country: "United States",
-        country_code: "US-SC",
-        flag: "🇺🇸",
-        servers: [{
-          region: "South Carolina Server",
-          hostname: getEnvVar('SOUTH_CAROLINA_HOSTNAME'),
-          external_port: safeParseInt(process.env.SOUTH_CAROLINA_PORT, 1194),
-          hub_name: "AKASH_HUB",
-          ca_certificate: formatCACertificate(getEnvVar('SOUTH_CAROLINA_CA_CERT')),
-          _comment: `VPN Credentials: Username: ${getEnvVar('SOUTH_CAROLINA_USERNAME', 'N/A')}, Password: ${getEnvVar('SOUTH_CAROLINA_PASSWORD', 'N/A')}`,
-          v2ray: hasRealV2RayUUID(getEnvVar('SOUTH_CAROLINA_V2RAY_UUID')) ? {
-            uuid: getEnvVar('SOUTH_CAROLINA_V2RAY_UUID'),
-            ports: [safeParseInt(process.env.SOUTH_CAROLINA_V2RAY_PORT, 1010)],
-            protocol: "vmess",
-            security: "auto",
-            network: "tcp"
-          } : null
-        }]
-      });
-    }
-
     // Switzerland Server
     if (getEnvVar('SWITZERLAND_HOSTNAME')) {
       countries.push({
@@ -405,9 +301,7 @@ router.get('/api/stats', (req, res) => {
     const countries = [
       getEnvVar('BELGIUM_HOSTNAME'),
       getEnvVar('US_HOSTNAME'),
-      getEnvVar('SWITZERLAND_HOSTNAME'),
-      getEnvVar('AUSTRALIA_HOSTNAME'),
-      getEnvVar('SOUTH_CAROLINA_HOSTNAME')
+      getEnvVar('SWITZERLAND_HOSTNAME')
     ].filter(Boolean); // Remove undefined/null values
 
     const stats = {
