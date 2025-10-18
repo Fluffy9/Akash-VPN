@@ -69,7 +69,7 @@ profiles:
   placement:
     dcloud:
       pricing:
-        softether:
+        softether:f
           denom: uakt
           amount: 100000
         app:
